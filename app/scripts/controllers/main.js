@@ -94,5 +94,23 @@ angular.module('angularVideoAppApp')
           // instead of a settings object
         ]
       });
+      // var elem = '<div class="well"><a href="google.com">Message one, From someone.</a></div>' +
+      //   '<div class="well"><a href="google.com">Message one, From someone.</a></div>' 
+      //   ;
+
+      var elem = ' <div class="btn-group"> <button type="button" class="btn btn-default" title="Hate that movie!" aria-label="Left Align"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button> <button type="button" class="btn btn-default" title="Its fine" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button> <button type="button" class="btn btn-default" title="Like this!" aria-label="Right Align"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> </div>';
+      $('#watchBtnID').popover({ animation: true, content: elem, title: 'Do you like it?', trigger: 'focus', html: true });
+      $('#watchBtnID').on('shown.bs.popover', function () {
+            $('button.btn.btn-default').click(function (e) {
+                // angular.element(angularRegion).scope() - получение scope, который используется элементом разметки с id="angularRegion"
+                // $apply - применяет изменения на объекте scope
+                angular.element(this).scope().$apply('nextItem()');
+                
+            });
+      });
     };
+
+
+
+
   });

@@ -124,3 +124,17 @@ body {
 {
   position: relative;
 }
+
+.btn-group.btn-group-justified
+{
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.btn-group .glyphicon
+{
+    margin-right: 6px;
+}
+.popover-content
+{
+  min-width: 165px;
+}

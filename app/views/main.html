@@ -12,12 +12,17 @@
     </div>
   </div>
   <div class="col-lg-4">
+<div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+  <a href="#" ng-click="nextItem()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add to list</a>
+  <a href="#" ng-click="nextItem()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>Skip</a>
+  <a href="#" class="btn btn-primary" id="watchBtnID" data-title="Watched?" data-toggle="popover" data-placement="top" role="button"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Watched?</a>
+</div>
     <p class="lead">Description</p>
     <p ng-bind='currentItem.plot'>The incredible untold story of Katherine G. Johnson, Dorothy Vaughan and Mary Jackson - brilliant African-American women
       working at NASA, who served as the brains behind one of the greatest operations in history: the launch of astronaut
       John Glenn into orbit, a stunning achievement that restored the nation's confidence, turned around the Space Race,
       and galvanized the world. The visionary trio crossed all gender and race lines to inspire generations to dream big.</p>
-    <div class="row">
+    <!--<div class="row">
       <div class="col-xs-6">
         <div class="checkbox">
           <label>
@@ -34,17 +39,17 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
 
 
-    <div class="control-buttons">
+    <!--<div class="control-buttons">
       <button type="button" class="btn btn-primary" ng-click="prevItem()">
       <span class="glyphicon glyphicon-menu-left"></span> 
     </button>
       <button type="button" class="btn btn-primary" ng-click="nextItem()">
       <span class="glyphicon glyphicon-menu-right"></span> 
     </button>
-    </div>
+    </div>-->
 
   </div>
 
