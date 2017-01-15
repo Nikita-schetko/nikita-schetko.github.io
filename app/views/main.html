@@ -4,7 +4,7 @@
     <blockquote ng-bind='currentItem.tagline'>Meet the women you don't know, behind the mission you do.</blockquote>
   </div>
 </div>
-<div class="row">
+<div class="row main-row">
   <div class="col-lg-8">
     <div class="video-container">
       <!--<iframe id='mainvid' ng-src="{{currentItem.trailer}}"  frameborder="0" allowfullscreen></iframe>-->
@@ -17,6 +17,26 @@
       working at NASA, who served as the brains behind one of the greatest operations in history: the launch of astronaut
       John Glenn into orbit, a stunning achievement that restored the nation's confidence, turned around the Space Race,
       and galvanized the world. The visionary trio crossed all gender and race lines to inspire generations to dream big.</p>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="checkbox">
+          <label>
+        <input type="checkbox" ng-model="currentItem.watched"> I've seen this movie
+      </label>
+        </div>
+      </div>
+      <div class="col-xs-6 text-right">
+        <div ng-if="currentItem.watched">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default" title="Hate that movie!" aria-label="Left Align"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default" title="It's fine" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default" title="Like this!" aria-label="Right Align"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="control-buttons">
       <button type="button" class="btn btn-primary" ng-click="prevItem()">
       <span class="glyphicon glyphicon-menu-left"></span> 
@@ -25,7 +45,10 @@
       <span class="glyphicon glyphicon-menu-right"></span> 
     </button>
     </div>
+
   </div>
+
+
 </div>
 <div class="row slider-row">
   <div class="col-xs-12">

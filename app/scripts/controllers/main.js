@@ -15,10 +15,10 @@ angular.module('angularVideoAppApp')
       'Karma'
     ];
     $scope.items = [];
-    $scope.items[0] = { title: 'Basic title', tagline: 'basic tagline', plot: 'test', trailerEmbed: 'https://www.youtube.com/embed/1MhPz88bqig' };
+    // $scope.items[0] = { title: 'Basic title', tagline: 'basic tagline', plot: 'test', trailerEmbed: 'https://www.youtube.com/embed/1MhPz88bqig' };
     // trailer: 'http://youtube.com/watch?v=1MhPz88bqig'
-    $scope.currentPosition = 0;
     $scope.currentItem = {};
+    $scope.currentPosition = 0;
     $scope.$watch('currentPosition', function (newValue, oldValue) {
       console.log('Старое значение - ' + oldValue + ', новое значение - ' + newValue);
       $scope.currentItem = $scope.items[$scope.currentPosition];
@@ -42,15 +42,17 @@ angular.module('angularVideoAppApp')
       $http.get('https://le-taste.herokuapp.com/api/v1/movies/').then(function (response) {
         console.log(response);
         $scope.items = response.data;
-        for(var i=0; i<$scope.items.length-1; i++)
-        {
+        //Generating url for embed youtube videos
+        for (var i = 0; i < $scope.items.length - 1; i++) {
           var rx = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
           var youtubeBaseURL = 'https://youtube.com/embed/';
           var videoId = '';
           var matchedArray = [];
           var currentElement = $scope.items[i];
+          if (currentElement.trailer === null)
+          { break; }
           matchedArray = currentElement.trailer.match(rx);
-          currentElement.trailerEmbed = youtubeBaseURL + matchedArray[1];   
+          currentElement.trailerEmbed = youtubeBaseURL + matchedArray[1];
         }
         $scope.currentItem = $scope.items[0];
       });
