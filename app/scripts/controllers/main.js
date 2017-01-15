@@ -27,6 +27,7 @@ angular.module('angularVideoAppApp')
     $scope.nextItem = function () {
       //Check, if we are at the end of array
       $scope.currentPosition = ($scope.currentPosition === $scope.items.length - 1) ? 0 : $scope.currentPosition + 1;
+      $('.btn').blur(); 
     };
 
     $scope.prevItem = function () {
