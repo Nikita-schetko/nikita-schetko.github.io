@@ -1,34 +1,35 @@
 <div class="row">
   <div class="col-lg-12 text-left">
-    <h1>Hidden Figures</h1>
-    <blockquote>Meet the women you don't know, behind the mission you do.</blockquote>
+    <h1 ng-bind='currentItem.title'>Hidden Figures</h1>
+    <blockquote ng-bind='currentItem.tagline'>Meet the women you don't know, behind the mission you do.</blockquote>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-8">
     <div class="video-container">
-      <iframe id='mainvid' src="https://www.youtube.com/embed/1MhPz88bqig" frameborder="0" allowfullscreen></iframe>
+      <!--<iframe id='mainvid' ng-src="{{currentItem.trailer}}"  frameborder="0" allowfullscreen></iframe>-->
+      <iframe id='mainvid' ng-src="{{trustSrc(currentItem.trailerEmbed)}}" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
   <div class="col-lg-4">
     <p class="lead">Description</p>
-    <p>The incredible untold story of Katherine G. Johnson, Dorothy Vaughan and Mary Jackson - brilliant African-American women
+    <p ng-bind='currentItem.plot'>The incredible untold story of Katherine G. Johnson, Dorothy Vaughan and Mary Jackson - brilliant African-American women
       working at NASA, who served as the brains behind one of the greatest operations in history: the launch of astronaut
       John Glenn into orbit, a stunning achievement that restored the nation's confidence, turned around the Space Race,
       and galvanized the world. The visionary trio crossed all gender and race lines to inspire generations to dream big.</p>
-    <!--<div class="control-buttons">
-      <button type="button" class="btn btn-primary">
+    <div class="control-buttons">
+      <button type="button" class="btn btn-primary" ng-click="prevItem()">
       <span class="glyphicon glyphicon-menu-left"></span> 
     </button>
-      <button type="button" class="btn btn-primary">
+      <button type="button" class="btn btn-primary" ng-click="nextItem()">
       <span class="glyphicon glyphicon-menu-right"></span> 
     </button>
-    </div>-->
+    </div>
   </div>
 </div>
 <div class="row slider-row">
   <div class="col-xs-12">
-    <div class="your-class">
+    <!--<div class="your-class">
       <div class="slider-item">
         <div class="video-container">
           <iframe id='mainvid' src="https://youtube.com/embed/sGbxmsDFVnE" frameborder="0" allowfullscreen></iframe>
@@ -59,7 +60,7 @@
           <iframe id='mainvid' src="https://youtube.com/embed/oubRmV_9Ogo" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
+    </div>-->
 
   </div>
 </div>
