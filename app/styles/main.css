@@ -88,7 +88,7 @@ body {
 	padding-top:30px;
 	height:0;
 	overflow:hidden;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .video-container iframe, .video-container object, .video-container embed {
@@ -104,7 +104,7 @@ body {
     padding-top: 30px;
     height: 0;
     overflow: hidden;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .image-container img {
@@ -119,13 +119,44 @@ body {
 
 .your-class .slider-item
 {
-  width:400px;
-  height: 180px;
-  background-color: black;
+  width:150px;
+ text-align: center;
+  background-color: white;
   color:white;
   margin:0 8px;
 }
-
+.slider-item .img-wrapper
+{
+   position: relative; 
+   display: inline-block;
+}
+.slider-item .actor-name
+{
+    
+    left: 0;
+    display: block;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.62);
+    width: 100%;
+    color: #1d1d1d;
+    text-align: center;
+    padding: 5px 2px;
+    font-weight: bold;
+}
+.slider-item .actor-character
+{
+    
+    left: 0;
+    display: block;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.62);
+    width: 100%;
+    color: #1d1d1d;
+    text-align: center;
+    padding: 0px 1px;
+    font-weight: normal;
+    font-size:13px;    
+}
 .slider-row
 {
   margin-top: 0px;
