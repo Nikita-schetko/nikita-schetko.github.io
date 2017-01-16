@@ -60,7 +60,7 @@ angular.module('angularVideoAppApp')
           var matchedArray = [];
           var currentElement = $scope.items[i];
           // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-          currentElement.imageMainBackdrop = 'http://image.tmdb.org/t/p/w780/' + currentElement.backdrops[0].file_path;
+          currentElement.imageMainBackdrop = 'https://image.tmdb.org/t/p/w780/' + currentElement.backdrops[0].file_path;
           // jscs:enable requireCamelCaseOrUpperCaseIdentifier
 
           if (currentElement.trailer === null)

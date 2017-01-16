@@ -16,9 +16,14 @@
     </div>
     <button ng-click="changeState()" title="Watch trailer" ng-if="currentState == 'Poster'" class="ytp-large-play-button ytp-button" aria-label="Посмотреть Hillbilly Hip Hop"><svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%"><path class="ytp-large-play-button-bg" d="m .66,37.62 c 0,0 .66,4.70 2.70,6.77 2.58,2.71 5.98,2.63 7.49,2.91 5.43,.52 23.10,.68 23.12,.68 .00,-1.3e-5 14.29,-0.02 23.81,-0.71 1.32,-0.15 4.22,-0.17 6.81,-2.89 2.03,-2.07 2.70,-6.77 2.70,-6.77 0,0 .67,-5.52 .67,-11.04 l 0,-5.17 c 0,-5.52 -0.67,-11.04 -0.67,-11.04 0,0 -0.66,-4.70 -2.70,-6.77 C 62.03,.86 59.13,.84 57.80,.69 48.28,0 34.00,0 34.00,0 33.97,0 19.69,0 10.18,.69 8.85,.84 5.95,.86 3.36,3.58 1.32,5.65 .66,10.35 .66,10.35 c 0,0 -0.55,4.50 -0.66,9.45 l 0,8.36 c .10,4.94 .66,9.45 .66,9.45 z" fill="#1f1f1e" fill-opacity="0.81"></path><path d="m 26.96,13.67 18.37,9.62 -18.37,9.55 -0.00,-19.17 z" fill="#fff"></path><path d="M 45.02,23.46 45.32,23.28 26.96,13.67 43.32,24.34 45.02,23.46 z" fill="#ccc"></path></svg></button>
 
-<span class="imdbRatingPlugin" data-user="ur0683828" data-title="tt4846340" data-style="p1"><a href="http://www.imdb.com/title/tt4846340/?ref_=plg_rt_1"><img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" alt=" Hidden Figures
+<!--<span class="imdbRatingPlugin" ng-if="currentState == 'Poster'"  data-user="ur0683828" data-title="tt4846340" data-style="p1"><a href="http://www.imdb.com/title/tt4846340/?ref_=plg_rt_1"><img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" alt=" Hidden Figures
 (2016) on IMDb" />
-</a></span><script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";stags.parentNode.insertBefore(js,stags);})(document,'script','imdb-rating-api');</script>
+</a></span><script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";stags.parentNode.insertBefore(js,stags);})(document,'script','imdb-rating-api');</script>-->
+
+<span ng-if="currentState == 'Poster'" class="imdbRatingPlugin imdbRatingStyle1"  data-user="ur0683828" data-title="tt4846340" data-style="p1"><a href="http://www.imdb.com/title/tt4846340/?ref_=plg_rt_1"><img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" alt=" Hidden Figures
+(2016) on IMDb">
+</a><span class="rating">7.9<span class="ofTen">/10</span></span><img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_star_22x21.png" class="star"></span>
+  
   
   </div>
   <div class="col-lg-4">
