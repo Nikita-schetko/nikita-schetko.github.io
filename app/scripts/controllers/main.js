@@ -19,6 +19,8 @@ angular.module('angularVideoAppApp')
     // trailer: 'http://youtube.com/watch?v=1MhPz88bqig'
     $scope.currentItem = {};
     $scope.currentPosition = 0;
+    $scope.currentState = 'Poster';
+
     $scope.$watch('currentPosition', function (newValue, oldValue) {
       // console.log('Старое значение - ' + oldValue + ', новое значение - ' + newValue);
       $scope.currentItem = $scope.items[$scope.currentPosition];
@@ -26,6 +28,7 @@ angular.module('angularVideoAppApp')
 
     $scope.nextItem = function () {
       //Check, if we are at the end of array
+      $scope.currentState = 'Poster';
       $scope.currentPosition = ($scope.currentPosition === $scope.items.length - 1) ? 0 : $scope.currentPosition + 1;
       $('.btn').blur();
       $('#watchBtnID').popover('hide');
@@ -38,6 +41,12 @@ angular.module('angularVideoAppApp')
 
     $scope.trustSrc = function (src) {
       return $sce.trustAsResourceUrl(src);
+    };
+
+    
+    $scope.changeState = function() 
+    {
+      $scope.currentState = ($scope.currentState === 'Poster') ? 'Trailer' : 'Poster';
     };
 
     $scope.sendRequest = function () {
@@ -57,7 +66,7 @@ angular.module('angularVideoAppApp')
           if (currentElement.trailer === null)
           { break; }
           matchedArray = currentElement.trailer.match(rx);
-          currentElement.trailerEmbed = youtubeBaseURL + matchedArray[1];
+          currentElement.trailerEmbed = youtubeBaseURL + matchedArray[1] + '?autoplay=1';
 
         }
         console.log($scope.items);
