@@ -74,9 +74,11 @@ angular.module('angularVideoAppApp')
         }
         console.log($scope.items);
         $scope.currentItem = $scope.items[0];
-    // $scope.$watch('currentItem.imdbid', function () {
-    //   window.imdb.rating.createJSONP();
-    // });
+    $scope.$watch('currentItem.imdbid', function () {
+      window.imdb.rating.createJSONP();
+      $('.imdbRatingPlugin').children('img').remove();
+      $('.imdbRatingPlugin').children('span').remove();
+    });
       });
     };
     $scope.initilizeSlider = function () {
