@@ -77,6 +77,13 @@
 <div class="row slider-row">
   <div class="col-xs-12">
           <div class="your-class">
+            <div class="slider-item" ng-repeat="char in currentItem.crew_details | limitTo: 2">
+              <div class="img-wrapper">
+                  <img ng-src="{{char.picture | defaultImage}}" alt="">
+                  <div class="actor-name">{{char.name}}</div>
+                  <div class="actor-character">{{char.job}}</div>
+              </div>
+            </div>
             <div class="slider-item" ng-repeat="item in currentItem.characters | limitTo: 21" initilize-slider>
               <div class="img-wrapper">
                   <img src="{{'https://image.tmdb.org/t/p/w150/' + item.picture}}" alt="">

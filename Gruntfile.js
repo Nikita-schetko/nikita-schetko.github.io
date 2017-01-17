@@ -18,7 +18,7 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn'
   });
-
+  grunt.loadNpmTasks("grunt-modernizr");
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -469,6 +469,7 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
+  
     'filerev',
     'usemin',
     'htmlmin'
