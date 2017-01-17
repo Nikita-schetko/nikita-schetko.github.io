@@ -18,7 +18,7 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn'
   });
-  grunt.loadNpmTasks("grunt-modernizr");
+  grunt.loadNpmTasks('grunt-modernizr');
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
