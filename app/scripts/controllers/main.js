@@ -26,8 +26,11 @@ angular.module('angularVideoAppApp')
       $scope.currentItem = $scope.items[$scope.currentPosition];
     });
 
+    
+
     $scope.nextItem = function () {
       //Check, if we are at the end of array
+      $('.your-class').slick('unslick');
       $scope.currentState = 'Poster';
       $scope.currentPosition = ($scope.currentPosition === $scope.items.length - 1) ? 0 : $scope.currentPosition + 1;
       $('.btn').blur();
@@ -71,16 +74,18 @@ angular.module('angularVideoAppApp')
         }
         console.log($scope.items);
         $scope.currentItem = $scope.items[0];
+    // $scope.$watch('currentItem.imdbid', function () {
+    //   window.imdb.rating.createJSONP();
+    // });
       });
     };
-
     $scope.initilizeSlider = function () {
-      $('.your-class').slick({
+            $('.your-class').slick({
         dots: true,
         infinite: true,
         speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 7,
+        slidesToScroll: 7,
         responsive: [
           {
             breakpoint: 1024,
@@ -109,7 +114,10 @@ angular.module('angularVideoAppApp')
           // settings: 'unslick'
           // instead of a settings object
         ]
-      });
+      });      
+    };
+    $scope.initilizePopOverButtons = function () {
+
       // var elem = '<div class="well"><a href="google.com">Message one, From someone.</a></div>' +
       //   '<div class="well"><a href="google.com">Message one, From someone.</a></div>' 
       //   ;
