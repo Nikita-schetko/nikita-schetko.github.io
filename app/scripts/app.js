@@ -16,6 +16,7 @@ angular
       scope.initilizeSlider();
     }
   };
+
 }).filter('defaultImage', function () {
     // value - данные для которых применяется фильтр
     return function (value) {
@@ -44,3 +45,6 @@ angular
 //         }
 //     };
 // });
+
+
+
