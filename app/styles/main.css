@@ -16,11 +16,13 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
-
+blockquote
+{
+    margin-bottom: 10px;
+}
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -115,7 +117,31 @@ body {
 	height:100%;
 }
 
-
+/* BUTTONS HOVER FIX */
+    .no-touchevents .btn.btn-primary
+    {
+        transition: background-color 0.3s ease;
+    }
+	.no-touchevents .btn.btn-primary:hover
+    {
+            background-color: #286090;
+            border-color: #204d74;
+    }
+    .touchevents .btn.btn-primary:hover
+    {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;     
+    }
+    .touchevents #watchBtnID:hover
+    {
+            background-color: #286090;
+            border-color: #204d74;  
+    }
+	.touchevents .btn.btn-primary:active {
+            background-color: #286090;
+            border-color: #204d74;
+	}
 
 .your-class .slider-item
 {
@@ -163,12 +189,22 @@ body {
   margin-left: -25px;
   margin-right: -25px;
 }
+.your-class .slick-prev
+{
+    left: -20px;
+}
+
 .slick-prev:before, .slick-next:before
 {
   color:black;
   font-size:20px;
 }
-
+.slick-prev, .slick-next
+{
+     -webkit-transform: translate(0, -100%);
+    -ms-transform: translate(0, -100%);
+    transform: translate(0, -100%);   
+}
 .main-row
 {
   position: relative;
@@ -194,6 +230,9 @@ body {
     width: 1215px;
 }
 }
+
+
+/* YOUTUBE PLAY BUTTON STYLES */
 
 .ytp-button:not([aria-disabled=true]):not([disabled]):not([aria-hidden=true]) {
     cursor: pointer;
@@ -244,6 +283,11 @@ border: none;
     fill: #cc181e;
     fill-opacity: 1;
 }
+
+
+
+/* STYLES FROM IMDB RATING PLUGIN */
+
 
 .imdbRatingPlugin 
 {
