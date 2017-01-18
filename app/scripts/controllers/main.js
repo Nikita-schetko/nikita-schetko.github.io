@@ -26,7 +26,16 @@ angular.module('angularVideoAppApp')
       $scope.currentItem = $scope.items[$scope.currentPosition];
     });
 
-
+    // $scope.auth = function() 
+    // {
+    //     $http.post('https://le-taste.herokuapp.com/api/v1/auth/login/', { email: 'admin@lse_taste.com', password: '123qwe' })
+    //       .then(function (response) {
+    //           console.log(response);
+    //       }, function (response) {
+    //           console.log('ERROR!');
+    //           console.log(response);
+    //       } );     
+    // }
 
     $scope.nextItem = function () {
       //Check, if we are at the end of array
@@ -46,7 +55,7 @@ angular.module('angularVideoAppApp')
       return $sce.trustAsResourceUrl(src);
     };
 
-
+    
     $scope.changeState = function () {
       $scope.currentState = ($scope.currentState === 'Poster') ? 'Trailer' : 'Poster';
     };
