@@ -1,4 +1,4 @@
-<div ng-init="initilizePopOverButtons();" ng-controller="MainCtrl">
+<div ng-init="firstInitOfApp();initilizePopOverButtons();" ng-controller="MainCtrl">
 <div class="row">
   <div class="col-lg-12 text-left">
     <h1 ng-bind="currentItem.title">Hidden Figures</h1>
@@ -47,9 +47,9 @@
   </div>
   <div class="col-lg-4">
     <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
-      <a href="#" ng-click="nextItem()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add to list</a>
-      <a href="#" ng-click="nextItem()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>Skip</a>
-      <a href="#" class="btn btn-primary" id="watchBtnID" data-title="Watched?" data-toggle="popover" data-placement="top" role="button"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Watched?</a>
+      <a href="" ng-click="nextItem()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add to list</a>
+      <a href="" ng-click="nextItem()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>Skip</a>
+      <a href="" class="btn btn-primary" id="watchBtnID" data-title="Watched?" data-toggle="popover" data-placement="top" role="button"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Watched?</a>
     </div>
     <p class="lead">Description</p>
     <p ng-bind="currentItem.plot">The incredible untold story of Katherine G. Johnson, Dorothy Vaughan and Mary Jackson - brilliant African-American women
@@ -57,8 +57,9 @@
       John Glenn into orbit, a stunning achievement that restored the nation"s confidence, turned around the Space Race,
       and galvanized the world. The visionary trio crossed all gender and race lines to inspire generations to dream big.</p>
   </div>
-  <button ng-click="logOut()">Real log out</button>
-
+  
+  <button ng-click="prevItem()">Click</button>
+  <button ng-click="nextItem()">Next</button>
 </div>
 <div class="row slider-row">
   <div class="col-xs-12">

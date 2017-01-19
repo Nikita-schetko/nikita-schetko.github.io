@@ -13,7 +13,10 @@ angular.module('Authentication')
             AuthenticationService.Login($scope.username, $scope.password, function(response) {
                 console.log(response);
                 if(response.statusText === 'OK') {
-                    AuthenticationService.SetCredentials($scope.username, $scope.password);
+                    // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
+                    AuthenticationService.SetCredentials($scope.username, $scope.password, response.data.auth_token);
+                    // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
+                    $rootScope.logged = true;
                     $location.path('/');
                 } else {
                     $scope.error = response.message;

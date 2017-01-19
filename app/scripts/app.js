@@ -11,11 +11,11 @@
 
 angular.module('Authentication', []);
 angular.module('HomeTest', []);
-angular.module('Main', []);
+angular.module('mainModule', []);
 angular.module('angularVideoAppApp', [
     'Authentication',
     'HomeTest',
-    'Main',
+    'mainModule',
     'ngRoute',
     'ngCookies'
 ])
@@ -72,6 +72,8 @@ angular.module('angularVideoAppApp', [
             $rootScope.globals = $cookieStore.get('globals') || {};
             if ($rootScope.globals.currentUser) {
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+                $rootScope.logged = true;
+                console.log($rootScope.globals);
             }
 
             $rootScope.$on('$locationChangeStart', function (event, next, current) {
@@ -81,6 +83,9 @@ angular.module('angularVideoAppApp', [
                 }
             });
         }])
+    .run(function ($rootScope) {
+        $rootScope.initilizationState = 'NotInitilized';
+    })
     .service('getDataFromAPI', function ($http) {
         var myData = null;
 

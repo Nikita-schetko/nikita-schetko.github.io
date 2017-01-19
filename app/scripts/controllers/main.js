@@ -7,24 +7,32 @@
  * # MainCtrl
  * Controller of the angularVideoAppApp
  */
-angular.module('angularVideoAppApp')
-  .controller('MainCtrl', function ($scope, $http, $sce, $timeout, $location, AuthenticationService) {
-    console.log($scope);
+angular.module('mainModule')
+  .controller('MainCtrl', function ($scope, $rootScope, $http, $sce, $timeout, $location, AuthenticationService) {
+    // console.log($scope);
+    // console.log($rootScope);
+    // console.log($rootScope.initilizationState);
+    $scope.firstInitOfApp =  function () {
+      if($rootScope.initilizationState === 'NotInitilized')
+      {
+        $scope.sendRequest();
+      }
+    };
     $scope.items = [];
     // $scope.items[0] = { title: 'Basic title', tagline: 'basic tagline', plot: 'test', trailerEmbed: 'https://www.youtube.com/embed/1MhPz88bqig' };
     // trailer: 'http://youtube.com/watch?v=1MhPz88bqig'
     $scope.currentItem = {};
     $scope.currentPosition = 0;
     $scope.currentState = 'Poster';
-
     $scope.$watch('currentPosition', function (newValue, oldValue) {
       // console.log('Старое значение - ' + oldValue + ', новое значение - ' + newValue);
       $scope.currentItem = $scope.items[$scope.currentPosition];
     });
 
-    $scope.logOut = function() 
+    $rootScope.logOut = function() 
     {
         AuthenticationService.ClearCredentials();
+        $rootScope.logged = false;
         $location.path('/login');
     };
 
@@ -73,11 +81,10 @@ angular.module('angularVideoAppApp')
 
         }
         console.log($scope.items);
+        $rootScope.initilizationState = 'Initilized';
         $scope.currentItem = $scope.items[0];
         $scope.$watch('currentItem.imdbid', function () {
           $scope.getRatingFromImdb();
-          // $('.imdbRatingPlugin').children('img').remove();
-          // $('.imdbRatingPlugin').children('span').remove();
         });
       });
     };
