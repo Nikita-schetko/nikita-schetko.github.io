@@ -8,27 +8,96 @@
  *
  * Main module of the application.
  */
-angular
-    .module('angularVideoAppApp', ['ngRoute']).config(function ($routeProvider, $locationProvider) {
 
-        // html5Mode - настраивает сервис loction на использование HTML5 History API
-        // данная настройка позволяет исопльзовать обычные URL вместо URL с символом #
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
+angular.module('Authentication', []);
+angular.module('HomeTest', []);
+angular.module('Main', []);
+angular.module('angularVideoAppApp', [
+    'Authentication',
+    'HomeTest',
+    'Main',
+    'ngRoute',
+    'ngCookies'
+])
+
+    // .config(function ($routeProvider, $locationProvider) {
+
+    //     // html5Mode - настраивает сервис loction на использование HTML5 History API
+    //     // данная настройка позволяет исопльзовать обычные URL вместо URL с символом #
+    //     $locationProvider.html5Mode({
+    //         enabled: true,
+    //         requireBase: false
+    //     });
+
+    //     // при зпросе по адресу /view2 должна отображаться страница view2.html
+    //     $routeProvider.when('/login', {
+    //         templateUrl: 'views/login.html'
+    //     });
+
+    //     // во всех остальных случаях view1.html
+    //     $routeProvider.otherwise({
+    //         templateUrl: 'views/main.html'
+    //     });
+    // })
+    .config(['$routeProvider', function ($routeProvider) {
+
+        $routeProvider
+            .when('/login', {
+                controller: 'LoginController',
+                templateUrl: 'views/login.html'
+            })
+
+            // .when('/', {
+            //     controller: 'MainCtrl',
+            //     templateUrl: 'views/main.html'
+            // })
+
+            .when('/', {
+                controller: 'MainCtrl',
+                templateUrl: 'views/main.html'
+                // ,resolve: {
+                //     'dataFromAPI': function (getDataFromAPI) {
+                //         // MyServiceData will also be injectable in your controller, if you don't want this you could create a new promise with the $q service
+                //         return getDataFromAPI.promise;
+                //     }
+                // }
+            })
+
+            .otherwise({ redirectTo: '/login' });
+    }])
+
+    .run(['$rootScope', '$location', '$cookieStore', '$http',
+        function ($rootScope, $location, $cookieStore, $http) {
+            // keep user logged in after page refresh
+            $rootScope.globals = $cookieStore.get('globals') || {};
+            if ($rootScope.globals.currentUser) {
+                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+            }
+
+            $rootScope.$on('$locationChangeStart', function (event, next, current) {
+                // redirect to login page if not logged in
+                if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+                    $location.path('/login');
+                }
+            });
+        }])
+    .service('getDataFromAPI', function ($http) {
+        var myData = null;
+
+        var promise = $http.get('https://le-taste.herokuapp.com/api/v1/movies/').then(function (data) {
+            myData = data;
         });
 
-        // при зпросе по адресу /view2 должна отображаться страница view2.html
-        $routeProvider.when('/login', {
-            templateUrl: 'views/login.html'
-        });
-
-        // во всех остальных случаях view1.html
-        $routeProvider.otherwise({
-            templateUrl: 'views/main.html'
-        });
+        return {
+            promise: promise,
+            setData: function (data) {
+                myData = data;
+            },
+            doStuff: function () {
+                return myData;//.getSomeData();
+            }
+        };
     })
-
     .directive('initilizeSlider', function () {
         return function (scope, element, attrs) {
             angular.element(element).css('color', 'blue');

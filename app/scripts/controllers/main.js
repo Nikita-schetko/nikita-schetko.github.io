@@ -8,12 +8,8 @@
  * Controller of the angularVideoAppApp
  */
 angular.module('angularVideoAppApp')
-  .controller('MainCtrl', function ($scope, $http, $sce, $timeout, $location) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $http, $sce, $timeout, $location, AuthenticationService) {
+    console.log($scope);
     $scope.items = [];
     // $scope.items[0] = { title: 'Basic title', tagline: 'basic tagline', plot: 'test', trailerEmbed: 'https://www.youtube.com/embed/1MhPz88bqig' };
     // trailer: 'http://youtube.com/watch?v=1MhPz88bqig'
@@ -26,7 +22,11 @@ angular.module('angularVideoAppApp')
       $scope.currentItem = $scope.items[$scope.currentPosition];
     });
 
-
+    $scope.logOut = function() 
+    {
+        AuthenticationService.ClearCredentials();
+        $location.path('/login');
+    };
 
     $scope.nextItem = function () {
       //Check, if we are at the end of array
