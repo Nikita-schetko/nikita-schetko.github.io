@@ -183,6 +183,11 @@ blockquote
     font-weight: normal;
     font-size:13px;    
 }
+.actor-character i 
+{
+     color : gold;
+     margin-right: 2px;
+}
 .slider-row
 {
   margin-top: 0px;

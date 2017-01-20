@@ -46,8 +46,8 @@
 
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a href="../" >About</a></li>
+              <li><a href="/login" >Contact</a></li>
             </ul>
           </div>
         </div>
@@ -55,7 +55,8 @@
     </div>
 
     <div class="container">
-    <div ng-include="'views/main.html'" onload="initilizePopOverButtons();sendRequest();" ng-controller="MainCtrl"></div>
+    <!--<div ng-include="'views/main.html'" onload="initilizePopOverButtons();sendRequest();" ng-controller="MainCtrl"></div>-->
+    <div ng-view onload="initilizePopOverButtons();sendRequest();" ng-controller="MainCtrl"></div>    
     </div>
 
     <div class="footer">
@@ -82,11 +83,18 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/slick-carousel/slick/slick.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+>>>>>>> a2f15020f9d071cc79cad6b04752f48dd354a632
     <!-- endbower -->
     <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <!--<script src="scripts/imdbRatingPlugIn.js"></script>-->
+        <script src="scripts/imdbRatingShort.js"></script>
         <!-- endbuild -->
         
 </body>

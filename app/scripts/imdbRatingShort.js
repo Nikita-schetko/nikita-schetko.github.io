@@ -144,7 +144,7 @@
                 // imdb.rating.elems[tconst]["style"] = style;
                 // create JSONP request
                 var scriptTag = document.createElement("script");
-                scriptTag.src = "http://p.media-imdb.com/static-content/documents/v1/title/" + tconst +
+                scriptTag.src = "https://p.media-imdb.com/static-content/documents/v1/title/" + tconst +
                          "/ratings%3Fjsonp=imdb.rating.run:imdb.api.title.ratings/data.json?u=" + user + "&s=" +
                         style;
                 scriptTag.id = "imdb-jsonp-" + tconst;
