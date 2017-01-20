@@ -8,10 +8,23 @@
  * Controller of the angularVideoAppApp
  */
 angular.module('mainModule')
-  .controller('MainCtrl', function ($scope, $rootScope, $http, $sce, $timeout, $location, AuthenticationService) {
+  .controller('MainCtrl', function ($scope, $rootScope, $http, $sce, $timeout, $location, AuthenticationService, toastr) {
     // console.log($scope);
     // console.log($rootScope);
     // console.log($rootScope.initilizationState);
+
+    $scope.addToWatchList = function (itemTitle) {
+            $http.post('https://le-taste.herokuapp.com/api/v1/movies/' + $scope.currentItem.id + '/add_to_watch_list/')
+                .then(function successCallback(response) {
+                   toastr.success('<em>' + itemTitle + '</em><span> movie just have been successfully added to your watchlist! </span>',  {
+                    allowHtml: true
+                  });
+                   // console.log(response);
+                }, function errorCallback(response) {
+                    toastr.error('Your credentials are gone', 'Error');
+                    console.log(response);
+                });
+    };
     $scope.firstInitOfApp =  function () {
       if($rootScope.initilizationState === 'NotInitilized')
       {
@@ -25,7 +38,6 @@ angular.module('mainModule')
     $scope.currentPosition = 0;
     $scope.currentState = 'Poster';
     $scope.$watch('currentPosition', function (newValue, oldValue) {
-      // console.log('Старое значение - ' + oldValue + ', новое значение - ' + newValue);
       $scope.currentItem = $scope.items[$scope.currentPosition];
     });
 
