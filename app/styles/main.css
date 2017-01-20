@@ -10,12 +10,12 @@ body {
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
+/*.header,
 .marketing,
 .footer {
   padding-left: 15px;
   padding-right: 15px;
-}
+}*/
 blockquote
 {
     margin-bottom: 10px;
@@ -234,6 +234,29 @@ blockquote
 .container {
     width: 1215px;
 }
+}
+@media (min-width: 768px){
+.navbar-right {
+    float: right !important;
+    margin-right: -30px;
+}
+}
+
+@media (max-width: 768px){
+.navbar.navbar-default {
+    border-bottom: 1px solid #e7e7e7;
+}
+.header {
+    border-bottom: 0 none;
+}
+
+}
+
+.login-form
+{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
 }
 
 

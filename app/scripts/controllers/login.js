@@ -15,13 +15,13 @@ angular.module('Authentication')
                 if(response.statusText === 'OK') {
                     // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
                     AuthenticationService.SetCredentials($scope.username, $scope.password, response.data.auth_token);
-                    // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
                     $rootScope.logged = true;
                     $location.path('/');
                 } else {
-                    $scope.error = response.message;
+                    $scope.error = response.data.non_field_errors;
                     $scope.dataLoading = false;
                 }
             });
         };
     }]);
+    // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
