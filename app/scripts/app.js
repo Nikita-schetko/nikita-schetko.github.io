@@ -22,25 +22,6 @@ angular.module('angularVideoAppApp', [
     'toastr'
 ])
 
-    // .config(function ($routeProvider, $locationProvider) {
-
-    //     // html5Mode - настраивает сервис loction на использование HTML5 History API
-    //     // данная настройка позволяет исопльзовать обычные URL вместо URL с символом #
-    //     $locationProvider.html5Mode({
-    //         enabled: true,
-    //         requireBase: false
-    //     });
-
-    //     // при зпросе по адресу /view2 должна отображаться страница view2.html
-    //     $routeProvider.when('/login', {
-    //         templateUrl: 'views/login.html'
-    //     });
-
-    //     // во всех остальных случаях view1.html
-    //     $routeProvider.otherwise({
-    //         templateUrl: 'views/main.html'
-    //     });
-    // })
     .config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider
@@ -85,29 +66,8 @@ angular.module('angularVideoAppApp', [
                 }
             });
         }])
-    .run(function ($rootScope) {
-        $rootScope.initilizationState = 'NotInitilized';
-    })
-    .service('getDataFromAPI', function ($http) {
-        var myData = null;
-
-        var promise = $http.get('https://le-taste.herokuapp.com/api/v1/movies/').then(function (data) {
-            myData = data;
-        });
-
-        return {
-            promise: promise,
-            setData: function (data) {
-                myData = data;
-            },
-            doStuff: function () {
-                return myData;//.getSomeData();
-            }
-        };
-    })
     .directive('initilizeSlider', function () {
         return function (scope, element, attrs) {
-            angular.element(element).css('color', 'blue');
             if (scope.$last) {
                 scope.initilizeSlider();
             }
@@ -125,6 +85,9 @@ angular.module('angularVideoAppApp', [
             }
         };
     });
+    // .run(function ($rootScope) {
+    //     $rootScope.initilizationState = 'NotInitilized';
+    // })
 // .directive('checkImage', function($http) {
 //     return {
 //         restrict: 'A',
@@ -142,5 +105,24 @@ angular.module('angularVideoAppApp', [
 //     };
 // });
 
+    // .config(function ($routeProvider, $locationProvider) {
+
+    //     // html5Mode - настраивает сервис loction на использование HTML5 History API
+    //     // данная настройка позволяет исопльзовать обычные URL вместо URL с символом #
+    //     $locationProvider.html5Mode({
+    //         enabled: true,
+    //         requireBase: false
+    //     });
+
+    //     // при зпросе по адресу /view2 должна отображаться страница view2.html
+    //     $routeProvider.when('/login', {
+    //         templateUrl: 'views/login.html'
+    //     });
+
+    //     // во всех остальных случаях view1.html
+    //     $routeProvider.otherwise({
+    //         templateUrl: 'views/main.html'
+    //     });
+    // })
 
 
