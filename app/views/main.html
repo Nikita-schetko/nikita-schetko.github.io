@@ -56,7 +56,7 @@
             <div class="actor-character"><i class="glyphicon glyphicon-star" aria-hidden="true"></i>{{char.job}}</div>
           </div>
         </div>
-        <div class="slider-item" ng-repeat="item in currentItem.characters | limitTo: 21" initilize-slider>
+        <div class="slider-item" ng-repeat="item in currentItem.characters | limitTo: 15" initilize-slider>
           <div class="img-wrapper">
             <img ng-src="{{item.picture | defaultImage}}" alt="">
             <div class="actor-name">{{item.name}}</div>

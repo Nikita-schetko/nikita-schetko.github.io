@@ -118,78 +118,80 @@ angular.module('mainModule')
       };
 
     $scope.initilizeSlider = function () {
-      $('.your-class').slick({
-        dots: true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 7,
-        slidesToScroll: 7,
-        responsive: [{
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 6,
-              slidesToScroll: 6,
-              infinite: true,
-              dots: true
-            }
+      $timeout(function () {
+        $('.your-class').slick({
+          dots: true,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 7,
+          slidesToScroll: 7,
+          responsive: [{
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 6,
+                slidesToScroll: 6,
+                infinite: true,
+                dots: true
+              }
 
-          }, {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 5,
-              slidesToScroll: 5,
-              infinite: true,
-              dots: true
-            }
-          }, {
-            breakpoint: 990,
-            settings: {
-              slidesToShow: 4,
-              slidesToScroll: 4,
-              infinite: true,
-              dots: true
-            }
+            }, {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                infinite: true,
+                dots: true
+              }
+            }, {
+              breakpoint: 990,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                infinite: true,
+                dots: true
+              }
 
-          }, {
+            }, {
 
-            breakpoint: 800,
-            settings: {
-              slidesToShow: 4,
-              slidesToScroll: 4,
-              infinite: true,
-              dots: true,
-              arrows: false
-            }
-          }, {
-            breakpoint: 700,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true,
-              arrows: false
-            }
-          }, {
-            breakpoint: 500,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              dots: false,
-              arrows: false
-            }
-          }, {
+              breakpoint: 800,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                infinite: true,
+                dots: true,
+                arrows: false
+              }
+            }, {
+              breakpoint: 700,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true,
+                arrows: false
+              }
+            }, {
+              breakpoint: 500,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                dots: false,
+                arrows: false
+              }
+            }, {
 
-            breakpoint: 350,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              dots: false
+              breakpoint: 350,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false
+              }
             }
-          }
-          // You can unslick at a given breakpoint now by adding:
-          // settings: 'unslick'
-          // instead of a settings object
-        ]
+            // You can unslick at a given breakpoint now by adding:
+            // settings: 'unslick'
+            // instead of a settings object
+          ]
+        });
       });
     };
     $scope.initilizePopOverButtons = function () {
