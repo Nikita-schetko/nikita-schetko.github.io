@@ -22,35 +22,55 @@ angular.module('angularVideoAppApp', [
     'toastr'
 ])
 
-    .config(['$routeProvider', function ($routeProvider) {
-
+    .config(function ($routeProvider,$locationProvider) {
+        // $locationProvider.html5Mode({
+        // enabled: true,
+        // requireBase: false
+        // });
         $routeProvider
             .when('/login', {
                 controller: 'LoginController',
                 templateUrl: 'views/login.html'
             })
 
-            // .when('/', {
-            //     controller: 'MainCtrl',
-            //     templateUrl: 'views/main.html'
-            // })
-
             .when('/', {
                 controller: 'MainCtrl',
                 templateUrl: 'views/main.html'
-                // ,resolve: {
-                //     'dataFromAPI': function (getDataFromAPI) {
-                //         // MyServiceData will also be injectable in your controller, if you don't want this you could create a new promise with the $q service
-                //         return getDataFromAPI.promise;
-                //     }
-                // }
             })
 
+            // .when('/', {
+            //     controller: 'MainCtrl',
+            //     templateUrl: 'views/main.html'
+            //     // ,resolve: {
+            //     //     'dataFromAPI': function (getDataFromAPI) {
+            //     //         // MyServiceData will also be injectable in your controller, if you don't want this you could create a new promise with the $q service
+            //     //         return getDataFromAPI.promise;
+            //     //     }
+            //     // }
+            // })
+            //     .when('/', {
+            //     template: '',
+            //     controller: function ($location,$rootScope) {
+            //     var hash = $location.path().substr(1);
+                
+            //     var splitted = hash.split('&');
+            //     var params = {};
+        
+            //     for (var i = 0; i < splitted.length; i++) {
+            //         var param  = splitted[i].split('=');
+            //         var key    = param[0];
+            //         var value  = param[1];
+            //         params[key] = value;
+            //         $rootScope.accesstoken=params;
+            //     }
+            //     $location.path('/about');
+            //     }
+            // })
             .otherwise({ redirectTo: '/login' });
-    }])
+    })
 
-    .run(['$rootScope', '$location', '$cookieStore', '$http',
-        function ($rootScope, $location, $cookieStore, $http) {
+    .run(['$rootScope', '$location', '$cookieStore', '$http', 'AuthenticationService',
+        function ($rootScope, $location, $cookieStore, $http, AuthenticationService) {
             // keep user logged in after page refresh
             $rootScope.globals = $cookieStore.get('globals') || {};
             if ($rootScope.globals.currentUser) {
@@ -58,14 +78,38 @@ angular.module('angularVideoAppApp', [
                 $rootScope.logged = true;
                 console.log($rootScope.globals);
             }
-
+            // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
             $rootScope.$on('$locationChangeStart', function (event, next, current) {
                 // redirect to login page if not logged in
                 if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-                    $location.path('/login');
+                    if (window.location.search.slice(0, 6) === '?code=' && $rootScope.logged !== true && $rootScope.requestSent !== true) {
+                        $rootScope.facebookCode = window.location.search.slice(6);
+                        // console.log($rootScope.redirectedURL);
+                        $rootScope.requestSent = true;
+                        $http.post('https://le-taste.herokuapp.com/api/v1/auth/social/token_user/', { provider: 'facebook', code: $rootScope.facebookCode, redirect_uri: 'http://localhost:9000/' })
+                        //    .then(function (response) {
+                        //        callback(response);
+                        //    });
+                            .then(function successCallback(response) {
+                                console.log(response);
+                                $rootScope.logged = true;
+                                $rootScope.requestSent = false;
+                                $location.path('/');
+                                AuthenticationService.SetCredentials('', '', response.data.token);
+                                
+                            }, function errorCallback(response) {
+                                console.log(response);
+                                $rootScope.requestSent = false;
+                                // $location.path('/login');
+                            });
+                    }
+                    else {
+                        $location.path('/login');
+                    }
                 }
             });
         }])
+        // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
     .directive('initilizeSlider', function () {
         return function (scope, element, attrs) {
             if (scope.$last) {

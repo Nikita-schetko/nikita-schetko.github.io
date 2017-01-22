@@ -23,5 +23,32 @@ angular.module('Authentication')
                 }
             });
         };
+    //   $scope.logout = function() {
+    //     Facebook.logout(function() {
+    //       $scope.$apply(function() {
+    //         $scope.user   = {};
+    //         $scope.logged = false;  
+    //       });
+    //     });
+    //   };
+    //     $scope.fbSignIn = function() {
+
+    //         Facebook.getLoginStatus(function (response) {
+    //             if (response.status === 'connected') {
+    //                 $scope.loggedIn = true;
+    //                 console.log('already connected!');
+    //                 console.log(response);
+    //             } else {
+    //                 $scope.loggedIn = false;
+    //                 Facebook.login(function (response) {
+    //                     if (response.status === 'connected') {
+    //                         $scope.loggedIn = true;
+    //                         console.log('first time connected!');
+    //                         console.log(response);
+    //                     }
+    //                 });
+    //             }
+    //         });
+    //    };       
     }]);
     // jscs:enable requireCamelCaseOrUpperCaseIdentifiers

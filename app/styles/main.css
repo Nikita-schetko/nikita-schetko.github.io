@@ -308,10 +308,36 @@ blockquote {
     }
 }
 
+/* LOGIN FORM  */
+
+.center-form {
+    width: 330px;
+    margin: 6% auto;
+    border-color: #cfd9D7;
+    border-radius: 2px;
+    box-shadow: 0 8px 17px rgba(0, 0, 0, .2);
+}
+.center-form .panel-body
+{
+    padding: 25px;
+}
+.center-form h2
+{
+        font-size: 22px;
+    margin-top: 0;
+    font-weight: bold;
+    position: relative;
+}
+.center-form h2 img
+{
+    position:absolute;
+    top: 5px;
+    margin-left: 10px;
+}
 .login-form {
     max-width: 500px;
     margin: 0 auto;
-    padding: 30px;
+    padding-top:10px;
 }
 
 @media (max-width: 768px) {
@@ -320,6 +346,39 @@ blockquote {
     }
 }
 
+.signup-or-separator {
+  position: relative;
+  height: 34px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  background: none;
+}
+
+.signup-or-separator hr {
+  width: 90%;
+  margin: -16px auto 10px auto;
+  border-top: 1px solid #dce0e0;
+}
+
+.signup-or-separator .text {
+  display: inline-block;
+  padding: 8px;
+  margin: 0;
+  background-color: #fff;
+}
+
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border: 1px solid #335190;
+}
+
+.btn-facebook:hover,
+.btn-facebook:focus {
+  color: #fff;
+  background-color: #294786;
+}
 
 /* YOUTUBE PLAY BUTTON STYLES */
 

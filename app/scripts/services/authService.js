@@ -19,7 +19,16 @@ angular.module('Authentication')
             //     callback(response);
             // }, 1000);
  
- 
+            //  $http.post('https://le-taste.herokuapp.com/api/v1/social/token_user/', { provider: 'facebook', code: code, redirect_uri: 'https://le-taste.herokuapp.com/callback/' })
+            // //    .then(function (response) {
+            // //        callback(response);
+            // //    });
+            //     .then(function successCallback(response) {
+            //         callback(response);
+            //     }, function errorCallback(response) {
+            //         callback(response);
+            //     });
+                
             /* Use this for real authentication
              ----------------------------------------------*/
             $http.post('https://le-taste.herokuapp.com/api/v1/auth/login/', { email: username, password: password })
