@@ -15,7 +15,7 @@
   </div>
   <!--Main row : images/videos + description and buttons-->
   <div class="row main-row">
-    <div class="col-lg-8 media-container-wrapper">
+    <div class="col-lg-8 media-container-wrapper" ng-show="currentItem">
       <div class="image-container" ng-if="currentState == 'Poster'">
         <img ng-src="{{trustSrc(currentItem.imageMainBackdrop || noImage780)}}" alt="{{currentItem.title + ' Poster'}}" ng-cloak
           id="posterimage">

@@ -139,6 +139,7 @@ blockquote {
 .main-view-container
 {
     position: relative;
+        min-height: 50vh;
 }
 .overlay {
     background: rgba(127, 127, 127, 0.46);
