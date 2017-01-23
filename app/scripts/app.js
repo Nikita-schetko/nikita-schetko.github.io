@@ -19,7 +19,8 @@ angular.module('angularVideoAppApp', [
     'ngRoute',
     'ngCookies',
     'ngAnimate', 
-    'toastr'
+    'toastr',
+    'slickCarousel'
 ])
 
     .config(function ($routeProvider,$locationProvider) {
@@ -110,14 +111,14 @@ angular.module('angularVideoAppApp', [
             });
         }])
         // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
-    .directive('initilizeSlider', function () {
-        return function (scope, element, attrs) {
-            if (scope.$last) {
-                scope.initilizeSlider();
-            }
-        };
-
-    }).filter('defaultImage', function () {
+        // .directive('initilizeSlider', function () {
+        //     return function (scope, element, attrs) {
+        //         if (scope.$last) {
+        //             scope.initilizeSlider();
+        //         }
+        //     };
+        // })
+    .filter('defaultImage', function () {
         // value - данные для которых применяется фильтр
         return function (value) {
             // проверка переменной value на наличие строки

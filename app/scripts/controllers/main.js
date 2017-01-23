@@ -42,9 +42,16 @@ angular.module('mainModule')
     $scope.nextItem = function () {
       //Check, if we are at the end of array
       // $('.your-class').fadeOut(100);
-      $('.your-class').slick('unslick');
+      $scope.opacity = false;
+      $scope.slickConfigLoaded = false;
+      // $('.your-class').slick('unslick');
       $scope.currentState = 'Poster';
       $scope.currentPosition = ($scope.currentPosition === $scope.items.length - 1) ? 0 : $scope.currentPosition + 1;
+      $timeout(function () {
+        $scope.slickConfigLoaded = true;
+        
+      });
+      
       $('.btn').blur();
       $('#watchBtnID').popover('hide');
     };
@@ -77,6 +84,7 @@ angular.module('mainModule')
         console.log($scope.items);
         $scope.initilizationState = 'Initilized';
         $scope.currentItem = $scope.items[0];
+        $scope.slickConfigLoaded = true;
         $scope.$watch('currentItem.imdbid', function () {
           $scope.getRatingFromImdb();
         });
@@ -98,15 +106,23 @@ angular.module('mainModule')
       $scope.mainView = function () {
           $location.path('/');
       };
-
-    $scope.initilizeSlider = function () {
-      $timeout(function () {
-        $('.your-class').slick({
+    
+    $scope.slickConfig = {
           dots: true,
           infinite: true,
           speed: 300,
           slidesToShow: 7,
           slidesToScroll: 7,
+          event: {
+            destroy: function (event, slick) {
+              console.log('destroy');
+            },
+            init: function (event, slick) {
+              console.log('init');
+              $scope.opacity = true;
+              $('.your-class ').animate({'opacity': 1}, 300);
+            }
+          },
           responsive: [{
               breakpoint: 1200,
               settings: {
@@ -173,10 +189,8 @@ angular.module('mainModule')
             // settings: 'unslick'
             // instead of a settings object
           ]
-        });
-        // $('.your-class').fadeIn();
-      });
-    };
+        };
+
     $scope.initilizePopOverButtons = function () {
 
       // var elem = '<div class="well"><a href="google.com">Message one, From someone.</a></div>' +

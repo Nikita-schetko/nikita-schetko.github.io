@@ -225,6 +225,10 @@ blockquote {
     background-color: #286090;
     border-color: #204d74;
 }
+.your-class 
+{
+    opacity: 0.1;
+}
 
 .your-class .slider-item {
     width: 150px;
@@ -329,6 +333,11 @@ blockquote {
     .header {
         border-bottom: 0 none;
     }
+}
+
+.min-height-300
+{
+    min-height: 300px;
 }
 
 /* LOGIN FORM  */

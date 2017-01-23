@@ -58,7 +58,29 @@
     <!--<a href='https://www.facebook.com/dialog/oauth?client_id=290907381018306&redirect_uri=http://localhost:9000/'> Refresh Facebook Token ON HEROKU</a>-->
   </div>
   <!--Slick-slider row-->
+
   <div class="row slider-row">
+    <div class="col-xs-12 min-height-300">
+            <slick class="your-class" settings="slickConfig" ng-if="slickConfigLoaded" ng-class="{ 'opacity100' : opacity}">
+        <div class="slider-item" ng-repeat="char in currentItem.crew_details | filter: { job : 'Director'}:true | limitTo: 1">
+          <div class="img-wrapper">
+            <img ng-src="{{char.picture | defaultImage}}" alt="">
+            <div class="actor-name">{{char.name}}</div>
+            <div class="actor-character"><i class="glyphicon glyphicon-star" aria-hidden="true"></i>{{char.job}}</div>
+          </div>
+        </div>
+        <div class="slider-item" ng-repeat="item in currentItem.characters | limitTo: 15" >
+          <div class="img-wrapper">
+            <img ng-src="{{item.picture | defaultImage}}" alt="">
+            <div class="actor-name">{{item.name}}</div>
+            <div class="actor-character">{{item.character}}</div>
+          </div>
+        </div>
+            </slick>
+    </div>
+  </div>
+
+  <!--<div class="row slider-row">
     <div class="col-xs-12">
       <div class="your-class">
         <div class="slider-item" ng-repeat="char in currentItem.crew_details | filter: { job : 'Director'}:true | limitTo: 1">
@@ -77,6 +99,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
+
 </div>
 
