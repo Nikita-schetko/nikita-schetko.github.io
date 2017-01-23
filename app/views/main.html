@@ -18,7 +18,7 @@
     <div class="col-lg-8 media-container-wrapper" ng-show="currentItem">
       <div class="image-container" ng-if="currentState == 'Poster'">
         <img ng-src="{{trustSrc(currentItem.imageMainBackdrop || noImage780)}}" alt="{{currentItem.title + ' Poster'}}" ng-cloak
-          id="posterimage">
+          id="posterimage" ng-animate-swap="currentItem.imageMainBackdrop || noImage780" class="cell swap-animation">
       </div>
       <div class="video-container" ng-if="currentState == 'Trailer'">
         <iframe id="mainvid" ng-src="{{trustSrc(currentItem.trailerEmbed)}}" frameborder="0" allowfullscreen></iframe>
