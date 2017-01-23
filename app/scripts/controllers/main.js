@@ -16,7 +16,18 @@ angular.module('mainModule')
     $scope.addToWatchList = function (itemTitle) {
       $http.post('https://le-taste.herokuapp.com/api/v1/movies/' + $scope.currentItem.id + '/add_to_watch_list/')
         .then(function successCallback(response) {
-          toastr.success('<em>' + itemTitle + '</em><span> movie just have been successfully added to your watchlist! </span>', { allowHtml: true });
+          toastr.success('<em>' + itemTitle + '</em><span> movie just has been successfully added to your watchlist! </span>', { allowHtml: true });
+          // console.log(response);
+        }, function errorCallback(response) {
+          toastr.error('Your credentials are gone; Please re-login to app', 'Error');
+          console.log(response);
+        });
+    };
+
+    $scope.likeMovie = function (itemTitle) {
+      $http.post('https://le-taste.herokuapp.com/api/v1/movies/' + $scope.currentItem.id + '/like/')
+        .then(function successCallback(response) {
+          toastr.success('<em>' + itemTitle + '</em><span> movie has been liked by you! </span>', { allowHtml: true });
           // console.log(response);
         }, function errorCallback(response) {
           toastr.error('Your credentials are gone; Please re-login to app', 'Error');
@@ -197,7 +208,7 @@ angular.module('mainModule')
       //   '<div class="well"><a href="google.com">Message one, From someone.</a></div>' 
       //   ;
 
-      var elem = ' <div class="btn-group"> <button type="button" class="btn btn-default" title="Hate that movie!" aria-label="Left Align"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button> <button type="button" class="btn btn-default" title="Its fine" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button> <button type="button" class="btn btn-default" title="Like this!" aria-label="Right Align"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> </div>';
+      var elem = ' <div class="btn-group"> <button type="button" class="btn btn-default btn-dislike" title="Hate that movie!" aria-label="Left Align"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button> <button type="button btn-soso" class="btn btn-default" title="Its fine" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button> <button type="button" class="btn btn-default btn-like" title="Like this!" aria-label="Right Align"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> </div>';
       $('#watchBtnID').popover({
         animation: true,
         content: elem,
@@ -206,11 +217,18 @@ angular.module('mainModule')
         html: true
       });
       $('#watchBtnID').on('shown.bs.popover', function () {
+        $('button.btn.btn-default.btn-like').click(function (e) {
+          // angular.element(angularRegion).scope() - получение scope, который используется элементом разметки с id="angularRegion"
+          // $apply - применяет изменения на объекте scope
+          angular.element(this).scope().$apply('likeMovie(currentItem.title)');
+          angular.element(this).scope().$apply('nextItem()');
+        });
+      });      
+      $('#watchBtnID').on('shown.bs.popover', function () {
         $('button.btn.btn-default').click(function (e) {
           // angular.element(angularRegion).scope() - получение scope, который используется элементом разметки с id="angularRegion"
           // $apply - применяет изменения на объекте scope
           angular.element(this).scope().$apply('nextItem()');
-
         });
       });
       $('body').on('hidden.bs.popover', function (e) {
