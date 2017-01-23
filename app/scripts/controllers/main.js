@@ -41,6 +41,7 @@ angular.module('mainModule')
 
     $scope.nextItem = function () {
       //Check, if we are at the end of array
+      // $('.your-class').fadeOut(100);
       $('.your-class').slick('unslick');
       $scope.currentState = 'Poster';
       $scope.currentPosition = ($scope.currentPosition === $scope.items.length - 1) ? 0 : $scope.currentPosition + 1;
@@ -173,6 +174,7 @@ angular.module('mainModule')
             // instead of a settings object
           ]
         });
+        // $('.your-class').fadeIn();
       });
     };
     $scope.initilizePopOverButtons = function () {
