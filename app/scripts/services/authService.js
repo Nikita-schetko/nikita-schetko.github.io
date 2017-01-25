@@ -8,29 +8,7 @@ angular.module('Authentication')
         var service = {};
  
         service.Login = function (username, password, callback) {
- 
-            /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
-            // $timeout(function(){
-            //     var response = { success: username === 'test' && password === 'test' };
-            //     if(!response.success) {
-            //         response.message = 'Username or password is incorrect';
-            //     }
-            //     callback(response);
-            // }, 1000);
- 
-            //  $http.post('https://le-taste.herokuapp.com/api/v1/social/token_user/', { provider: 'facebook', code: code, redirect_uri: 'https://le-taste.herokuapp.com/callback/' })
-            // //    .then(function (response) {
-            // //        callback(response);
-            // //    });
-            //     .then(function successCallback(response) {
-            //         callback(response);
-            //     }, function errorCallback(response) {
-            //         callback(response);
-            //     });
-                
-            /* Use this for real authentication
-             ----------------------------------------------*/
+                 
             $http.post('https://le-taste.herokuapp.com/api/v1/auth/login/', { email: username, password: password })
             //    .then(function (response) {
             //        callback(response);
@@ -42,10 +20,20 @@ angular.module('Authentication')
                 });
  
         };
-  
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
+        service.FacebookLogin = function (provider, code, callback) {
+                 
+            $http.post('https://le-taste.herokuapp.com/api/v1/auth/social/token_user/', { provider: provider, code: code, redirect_uri: window.location.origin + window.location.pathname })
+                .then(function successCallback(response) {
+                    callback(response);
+                }, function errorCallback(response) {
+                    callback(response);
+                });
+ 
+        };
+// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
+
         service.SetCredentials = function (username, password, token) {
-            // var authdata = Base64.encode(username + ':' + password);
-  
             $rootScope.globals = {
                 currentUser: {
                     username: username,

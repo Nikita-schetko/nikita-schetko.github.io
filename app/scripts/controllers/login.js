@@ -1,5 +1,5 @@
 'use strict';
-  
+
 angular.module('Authentication')
   
 .controller('LoginController',
