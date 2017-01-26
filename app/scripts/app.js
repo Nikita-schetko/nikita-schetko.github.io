@@ -11,10 +11,12 @@
 angular.module('Authentication', []);
 angular.module('HomeTest', []);
 angular.module('mainModule', []);
+angular.module('personalModule', []);
 angular.module('angularVideoAppApp', [
     'Authentication',
     'HomeTest',
     'mainModule',
+    'personalModule',
     'ngRoute',
     'ngCookies',
     'ngAnimate', 
@@ -32,7 +34,10 @@ angular.module('angularVideoAppApp', [
                 controller: 'LoginController',
                 templateUrl: 'views/login.html'
             })
-
+            .when('/personal', {
+                controller: 'PersonalCtrl',
+                templateUrl: 'views/personalview.html'
+            })
             .when('/', {
                 controller: 'MainCtrl',
                 templateUrl: 'views/main.html'
@@ -90,8 +95,16 @@ angular.module('angularVideoAppApp', [
             }
         };
     })
-    .run(function ($rootScope) {
+    .run(function ($rootScope, $location, AuthenticationService) {
         $rootScope.localpath = window.location.origin + window.location.pathname;
+        $rootScope.logOut = function () {
+            AuthenticationService.ClearCredentials();
+            $rootScope.logged = false;
+            $location.path('/login');
+        };
+        $rootScope.personalPage = function () {
+            $location.path('/personal');
+        };
     });
 
 

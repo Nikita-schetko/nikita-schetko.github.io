@@ -13,32 +13,6 @@ angular.module('mainModule')
         // console.log($scope);
         // console.log($rootScope);
         // console.log($rootScope.initilizationState);
-        $scope.addToWatchList = function(itemTitle) {
-            $http.post('https://le-taste.herokuapp.com/api/v1/movies/' + $scope.currentItem.id + '/add_to_watch_list/')
-                .then(function successCallback(response) {
-                    toastr.success('<em>' + itemTitle + '</em><span> movie just has been successfully added to your watchlist! </span>', {
-                        allowHtml: true
-                    });
-                    // console.log(response);
-                }, function errorCallback(response) {
-                    toastr.error('Your credentials are gone; Please re-login to app', 'Error');
-                    console.log(response);
-                });
-        };
-
-        $scope.likeMovie = function(itemTitle) {
-            $http.post('https://le-taste.herokuapp.com/api/v1/movies/' + $scope.currentItem.id + '/like/')
-                .then(function successCallback(response) {
-                    toastr.success('<em>' + itemTitle + '</em><span> movie has been liked by you! </span>', {
-                        allowHtml: true
-                    });
-                    // console.log(response);
-                }, function errorCallback(response) {
-                    toastr.error('Your credentials are gone; Please re-login to app', 'Error');
-                    console.log(response);
-                });
-        };
-
         $scope.items = [];
         $scope.currentItem = {};
         $scope.currentPosition = 0;
@@ -47,10 +21,53 @@ angular.module('mainModule')
             $scope.currentItem = $scope.items[$scope.currentPosition];
         });
 
-        $rootScope.logOut = function() {
-            AuthenticationService.ClearCredentials();
-            $rootScope.logged = false;
-            $location.path('/login');
+        $scope.sendUserAction = function(itemTitle, actionType)
+        {
+            var apiBaseUrl = 'https://le-taste.herokuapp.com/api/v1/movies/';
+            var apiActionUrl = '';
+            var successMessage = '';
+            var showSuccesNotification = true;
+            switch (actionType) { 
+                case 'add': 
+                apiActionUrl = '/add_to_watch_list/';
+                successMessage = '<span> movie just has been successfully added to your watchlist! </span>';
+                    break;
+                case 'like':
+                apiActionUrl = '/like/';
+                successMessage = '<span> movie has been liked by you! </span>';
+                    break;
+                case 'dislike': 
+                apiActionUrl = '/dislike/';
+                successMessage = '<span> You have disliked that movie. Thank your for your opinion!</span>';
+                    break;      
+                case 'soso': 
+                apiActionUrl = '/so_so/';
+                successMessage = '<span> Thank you for your respone! </span>';
+                    break;
+                case 'skip': 
+                apiActionUrl = '/skip/';
+                successMessage = '';
+                showSuccesNotification = false;
+                    break;
+                default:
+                    window.alert('actionType not specified!');
+                    return;
+            }
+
+            $http.post(apiBaseUrl + $scope.currentItem.id + apiActionUrl)
+                .then(function successCallback(response) {
+                    if(showSuccesNotification)
+                    {
+                        console.log(response);
+                        toastr.success('<em>' + itemTitle + '</em>' + successMessage, {
+                            allowHtml: true
+                        });
+                    }
+                }, function errorCallback(response) {
+                    toastr.error('Your credentials are gone or something else had happend; Please, try to re-login to app or contact with admins', 'Error');
+                    console.log(response);
+                });
+
         };
 
         $scope.nextItem = function() {
@@ -74,7 +91,7 @@ angular.module('mainModule')
             $scope.currentState = ($scope.currentState === 'Poster') ? 'Trailer' : 'Poster';
         };
 
-        $scope.sendRequest = function() {
+        $scope.getInitialData = function() {
             $http.get('https://le-taste.herokuapp.com/api/v1/movies/').then(function(response) {
                 $scope.items = response.data;
                 //Generating url for embed youtube videos and Generating image backdrops
@@ -119,11 +136,11 @@ angular.module('mainModule')
             slidesToShow: 7,
             slidesToScroll: 7,
             event: {
-                destroy: function(event, slick) {
-                    console.log('destroy');
-                },
+                // destroy: function(event, slick) {
+                //     console.log('destroy');
+                // },
                 init: function(event, slick) {
-                    console.log('init');
+                    // console.log('init');
                     $scope.opacity = true;
                     $('.your-class ').animate({
                         'opacity': 1
@@ -203,7 +220,7 @@ angular.module('mainModule')
             //   '<div class="well"><a href="google.com">Message one, From someone.</a></div>' 
             //   ;
             var watchBtnWidth = $('#watchBtnID').outerWidth();
-            var popoverElem = '<div class="btn-group" style="width:' + watchBtnWidth + 'px"><button type="button" class="btn btn-default btn-dislike" title="Hate that movie!" aria-label="Left Align"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button><button type="button btn-soso" class="btn btn-default" title="Its fine" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><button type="button" class="btn btn-default btn-like" title="Like this!" aria-label="Right Align"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button></div>';
+            var popoverElem = '<div class="btn-group" style="width:' + watchBtnWidth + 'px"><button type="button" class="btn btn-default btn-dislike" title="Hate that movie!" aria-label="Left Align"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button><button type="button" class="btn btn-default  btn-soso" title="Its fine" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><button type="button" class="btn btn-default btn-like" title="Like this!" aria-label="Right Align"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button></div>';
             var htmlTemplate = '<div class="popover popover-buttons" role="tooltip"><div class="popover-content"></div>';
             
             $('#watchBtnID').popover({
@@ -216,18 +233,25 @@ angular.module('mainModule')
                 placement: 'bottom'
             });
             $('#watchBtnID').on('shown.bs.popover', function() {
-                $('button.btn.btn-default.btn-like').click(function(e) {
+                $('button.btn.btn-dislike').click(function(e) {
                     // angular.element(angularRegion).scope() - получение scope, который используется элементом разметки с id="angularRegion"
                     // $apply - применяет изменения на объекте scope
-                    angular.element(this).scope().$apply('likeMovie(currentItem.title)');
-                    angular.element(this).scope().$apply('nextItem()');
+                    angular.element(this).scope().$apply('sendUserAction(currentItem.title, \'dislike\');nextItem()');
                 });
             });
             $('#watchBtnID').on('shown.bs.popover', function() {
-                $('button.btn.btn-default').click(function(e) {
+                $('button.btn.btn-default.btn-like').click(function(e) {
                     // angular.element(angularRegion).scope() - получение scope, который используется элементом разметки с id="angularRegion"
                     // $apply - применяет изменения на объекте scope
-                    angular.element(this).scope().$apply('nextItem()');
+                    angular.element(this).scope().$apply('sendUserAction(currentItem.title, \'like\');nextItem()');
+                    // angular.element(this).scope().$apply('nextItem()');
+                });
+            });
+            $('#watchBtnID').on('shown.bs.popover', function() {
+                $('button.btn.btn-soso').click(function(e) {
+                    // angular.element(angularRegion).scope() - получение scope, который используется элементом разметки с id="angularRegion"
+                    // $apply - применяет изменения на объекте scope
+                    angular.element(this).scope().$apply('sendUserAction(currentItem.title, \'soso\');nextItem()');
                 });
             });
             $('body').on('hidden.bs.popover', function(e) {
