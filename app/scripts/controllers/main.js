@@ -6,6 +6,7 @@
  * # MainCtrl
  * Controller of the angularVideoAppApp
  */
+// /// <reference path="../../../typings/index.d.ts" />
 
 angular.module('mainModule')
     .controller('MainCtrl', function($scope, $rootScope, $http, $sce, $timeout, $location, AuthenticationService, toastr) {
@@ -196,20 +197,23 @@ angular.module('mainModule')
                 // instead of a settings object
             ]
         };
-
         $scope.initilizePopOverButtons = function() {
 
             // var elem = '<div class="well"><a href="google.com">Message one, From someone.</a></div>' +
             //   '<div class="well"><a href="google.com">Message one, From someone.</a></div>' 
             //   ;
-
-            var elem = ' <div class="btn-group"> <button type="button" class="btn btn-default btn-dislike" title="Hate that movie!" aria-label="Left Align"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button> <button type="button btn-soso" class="btn btn-default" title="Its fine" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button> <button type="button" class="btn btn-default btn-like" title="Like this!" aria-label="Right Align"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> </div>';
+            var watchBtnWidth = $('#watchBtnID').outerWidth();
+            var popoverElem = '<div class="btn-group" style="width:' + watchBtnWidth + 'px"><button type="button" class="btn btn-default btn-dislike" title="Hate that movie!" aria-label="Left Align"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button><button type="button btn-soso" class="btn btn-default" title="Its fine" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><button type="button" class="btn btn-default btn-like" title="Like this!" aria-label="Right Align"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button></div>';
+            var htmlTemplate = '<div class="popover popover-buttons" role="tooltip"><div class="popover-content"></div>';
+            
             $('#watchBtnID').popover({
                 animation: true,
-                content: elem,
-                title: 'Do you like it?',
+                content: popoverElem,
+                template: htmlTemplate,
+                title: '',
                 trigger: 'click',
-                html: true
+                html: true,
+                placement: 'bottom'
             });
             $('#watchBtnID').on('shown.bs.popover', function() {
                 $('button.btn.btn-default.btn-like').click(function(e) {

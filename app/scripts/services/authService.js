@@ -1,7 +1,8 @@
 'use strict';
  // jscs:disable validateQuoteMarks 
+
 angular.module('Authentication')
-  
+ 
 .factory('AuthenticationService',
     ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
     function (Base64, $http, $cookieStore, $rootScope, $timeout) {

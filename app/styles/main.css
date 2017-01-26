@@ -300,6 +300,7 @@ blockquote {
     position: relative;
 }
 
+
 .btn-group.btn-group-justified {
     display: inline-block;
     margin-bottom: 16px;
@@ -309,10 +310,31 @@ blockquote {
     margin-right: 6px;
 }
 
-.popover-content {
-    min-width: 165px;
+.popover.popover-buttons {
+    border: 0 none;
+    margin-top:0px;
+    padding: 0;
 }
-
+.popover.popover-buttons .popover-content {
+    /*min-width: 165px;*/
+        padding: 0;
+}
+.popover.popover-buttons .btn-group
+{
+    white-space: nowrap;
+}
+.popover.popover-buttons .btn-group .btn
+{
+    width:calc(33.333333% + 0.66px);
+}
+.popover.popover-buttons .btn-group .btn-dislike
+{
+border-top-left-radius: 0;
+}
+.popover.popover-buttons .btn-group .btn-like
+{
+border-top-right-radius: 0;
+}
 @media (min-width: 1215px) {
     .container {
         width: 1215px;

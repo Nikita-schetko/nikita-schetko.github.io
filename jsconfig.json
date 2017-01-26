@@ -1,8 +1,13 @@
-{
-    "compilerOptions": {
-        "target": "es5"
-    },
-    "exclude": [
-        "node_modules"
-    ]
-}
+// {
+//     "compilerOptions": {
+//         "target": "es5"
+//     },
+//     "exclude": [
+//         "node_modules", "bower_components", "dist"
+//     ],
+//      "typeAcquisition": {
+//         "include": [
+//             "jquery","bootstrap","angular"
+//         ]
+//     }
+// }
