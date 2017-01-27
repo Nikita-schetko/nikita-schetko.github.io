@@ -102,8 +102,8 @@ angular.module('angularVideoAppApp', [
             $rootScope.logged = false;
             $location.path('/login');
         };
-        $rootScope.personalPage = function () {
-            $location.path('/personal');
+        $rootScope.personalPage = function (opinionValue) {
+            $location.path('/personal').search({opinion: opinionValue});
         };
     });
 

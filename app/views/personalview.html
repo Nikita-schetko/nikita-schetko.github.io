@@ -1,3 +1,16 @@
-<div class="row">
-    Personal view
+<div ng-init="getUserData();" ng-controller="PersonalCtrl">
+    <div class="loader-container" ng-hide="dataLoaded">
+        <div class="loader-wrapper">
+            <div class="loader"></div>
+        </div>
+        <div class="overlay">
+        </div>
+    </div>
+    <div class="row movie-grid">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 movie-grid__movie" ng-repeat="movie in items">
+            <img ng-src="{{trustSrc('https://image.tmdb.org/t/p/w780/' + movie.backdrops[0].file_path)}}" alt="" class="movie-grid__img img-responsive">
+            <div class="movie-grid__title">{{movie.title}}</div>
+            <div class="movie-grid__year">{{movie.year}}</div>
+        </div>
+    </div>
 </div>
