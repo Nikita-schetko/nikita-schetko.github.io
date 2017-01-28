@@ -1,0 +1,41 @@
+     .flexible-cont
+     {
+         display: flex;
+         flex-wrap: wrap;
+     }
+     .flexible-cont .flexible-cont__flex-item
+     {
+         flex: 0 1 128px;
+         text-align: center;
+         margin: 7px;
+
+     }
+     .flexible-cont a.flexible-cont__link,
+     .flexible-cont a.flexible-cont__link:visited
+     {
+         display: inline-block;
+         width: 128px;
+         padding: 7px;
+         padding-top: 25px;
+         cursor: pointer;
+         background: transparent;
+         transition: all 0.4s ease-in-out;
+         text-decoration: none;
+         color:#3a3a3a;
+     }
+     .flexible-cont a.flexible-cont__link:hover
+     {
+         background-color: #f3f3f3;
+         
+     }
+     .flexible-cont .flexible-cont__icon-img
+     {
+         border:0 none;
+         padding: 0;
+         margin: 0;
+     }
+     .flexible-cont .flexible-cont__icon-title
+     {
+         margin-top:10px;
+         text-decoration: none;
+     }
