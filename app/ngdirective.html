@@ -1,23 +1,42 @@
 <!doctype html>
-<html>
+<html ng-app="SampleApp">
+
 <head>
     <meta charset="UTF-8">
     <title>ngDirective sample</title>
-    <style type="text/css" >
-     .flex-cont
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="/angularIconsList.js"></script>
+    <script>
+        var app = angular.module("SampleApp", ['iconsList']);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+            $scope.items = [
+                { "ReportId": 5, "DisplayName": "ADL Greater Than MDS Score", "Path": "adl-greater-than-mds-score", "ParentReportId": 0 },
+                { "ReportId": 6, "DisplayName": "ADL vs MDS Score Rollup", "Path": "adl-vs-mds-score-rollup", "ParentReportId": 0 },
+                { "ReportId": 7, "DisplayName": "ADL vs MDS Score Detail", "Path": "adl-vs-mds-score-detail", "ParentReportId": 0 },
+                { "ReportId": 9, "DisplayName": "Real Time Average ADL Score Distribution", "Path": "realtime-average-adl-score-distribution", "ParentReportId": 0 },
+                { "ReportId": 10, "DisplayName": "Average ADL Scores Details", "Path": "average-adl-scores", "ParentReportId": 0 },
+                { "ReportId": 13, "DisplayName": "ADL RUGs IV Distribution - Current", "Path": "adl-rugs-iv-distribution-current", "ParentReportId": 0 },
+                { "ReportId": 14, "DisplayName": "RUGS IV ADL Distribution Detail", "Path": "adl-rugs-iv-distribution-detail", "ParentReportId": 0 }
+            ];
+        });
+
+    </script>
+<style type="text/css">
+     .flexible-cont
      {
          display: flex;
          flex-wrap: wrap;
      }
-     .flex-item
+     .flexible-cont .flexible-cont__flex-item
      {
          flex: 0 1 128px;
          text-align: center;
          margin: 7px;
 
      }
-     a.link-wrapper,
-     a.link-wrapper:-webkit-any-link
+     .flexible-cont a.flexible-cont__link,
+     .flexible-cont a.flexible-cont__link:visited
      {
          display: inline-block;
          width: 128px;
@@ -29,133 +48,41 @@
          text-decoration: none;
          color:#3a3a3a;
      }
-     a.link-wrapper:hover
+     .flexible-cont a.flexible-cont__link:hover
      {
          background-color: #f3f3f3;
          
      }
-     .icon-title
+     .flexible-cont .flexible-cont__icon-img
+     {
+         border:0 none;
+         padding: 0;
+         margin: 0;
+     }
+     .flexible-cont .flexible-cont__icon-title
      {
          margin-top:10px;
          text-decoration: none;
      }
     </style>
 </head>
-<body>
-    <div class="flex-cont">
-        <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>
 
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
-                </div>
-            </a>
-        </div>        
-         <div class="flex-item">
-            <a href="" class="link-wrapper">
-                <img class="icon-img" src="http://placehold.it/64x64">
-                <div class="icon-title">
-                    ADL Greater Than MDS Score
+<body ng-controller="SampleAppCtrl">
+    
+    <div icons-list="items" icon-name="DisplayName" icon-link="Path" icon-image="">
+    </div>
+
+    <!--<div class="flexible-cont" >
+        <div class="flexible-cont__flex-item" ng-repeat="item in items">
+            <a href="" class="flexible-cont__link">
+                <img class="flexible-cont__icon-img" src="http://placehold.it/64x64">
+                <div class="flexible-cont__icon-title">
+                    {{item.DisplayName}}
                 </div>
             </a>
         </div>
-    </div>
+    </div>-->
+    
 </body>
+
 </html>
