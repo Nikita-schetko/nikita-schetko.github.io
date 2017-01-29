@@ -485,7 +485,18 @@ blockquote {
        font-size:16px; 
     }
 }
-
+.movie-grid .btn
+{
+    border:1px solid #e5e5e5;
+}
+.movie-grid .btn-group .btn:first-child
+{
+    border-top-left-radius: 0;
+}
+.movie-grid .btn-group .btn:last-child
+{
+    border-top-right-radius: 0;
+}
 /* YOUTUBE PLAY BUTTON STYLES */
 
 .ytp-button:not([aria-disabled=true]):not([disabled]):not([aria-hidden=true]) {

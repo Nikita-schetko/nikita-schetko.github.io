@@ -8,7 +8,12 @@
     </div>
     <div class="row movie-grid">
         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 movie-grid__movie" ng-repeat="movie in items">
-            <img ng-src="{{trustSrc('https://image.tmdb.org/t/p/w780/' + movie.posters[0].file_path)}}" alt="" class="movie-grid__img img-responsive">
+            <img ng-src="{{trustSrc('https://image.tmdb.org/t/p/w320/' + movie.posters[0].file_path)}}" alt="" class="movie-grid__img img-responsive">
+            <!--<div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+                <a href="" ng-click="sendUserAction(currentItem.title, 'add');nextItem()" class="btn " role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                <a href="" ng-click="sendUserAction(currentItem.title, 'skip');nextItem()" class="btn " role="button"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
+                <a href="" class="btn " id="watchBtnID" data-title="Watched?" data-toggle="popover" data-placement="top" role="button"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+            </div>-->
             <div class="movie-grid__title">{{movie.title}}</div>
             <div class="movie-grid__year">{{movie.year}}</div>
         </div>
