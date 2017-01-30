@@ -454,11 +454,16 @@ blockquote {
 
 
 /* MOVIE GRID */
-.movie-grid
-{
+
+.movie-grid {
     margin-top: 30px;
     margin-bottom: 15px;
 }
+
+.movie-grid .movie-grid__movie {
+    position: relative;
+}
+
 .movie-grid .movie-grid__title {
     margin: 7px 0 2px 0;
     font-weight: bold;
@@ -473,19 +478,50 @@ blockquote {
 
 @media (max-width: 768px) {
     .movie-grid {
-        margin-top:15px;
+        margin-top: 15px;
     }
     .movie-grid .movie-grid__movie {
         margin-bottom: 15px;
     }
     .movie-grid .movie-grid__title {
-        font-size:20px;
+        font-size: 20px;
     }
     .movie-grid .movie-grid__year {
-       font-size:16px; 
+        font-size: 16px;
     }
 }
-.movie-grid .btn
+.dropdown-group
+{
+position: absolute;
+    top: 10px;
+    right: 25px;
+}
+.btn-dropdown {
+
+    opacity: 0.8;
+    padding-bottom: 4px;
+    padding-right: 6px;
+    padding-left: 10px;
+    transition: all ease-in-out 0.3;
+    background: rgb(247, 247, 247);
+}
+.movie-grid .dropdown-group.open .btn-dropdown
+{
+    opacity: 0.93;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.movie-grid .dropdown-menu
+{
+    background: rgb(247, 247, 247);
+    min-width: 130px;
+    margin-top: -1px;
+    border-top-right-radius: 0;
+    opacity: 0.93
+}
+
+/*.movie-grid .btn
 {
     border:1px solid #e5e5e5;
 }
@@ -496,7 +532,9 @@ blockquote {
 .movie-grid .btn-group .btn:last-child
 {
     border-top-right-radius: 0;
-}
+}*/
+
+
 /* YOUTUBE PLAY BUTTON STYLES */
 
 .ytp-button:not([aria-disabled=true]):not([disabled]):not([aria-hidden=true]) {

@@ -22,6 +22,9 @@ angular.module('personalModule')
                 console.log($scope.items);
                 });
         };
+        $scope.finished = function() {
+            $('.dropdown-toggle').dropdown();
+        };
         $scope.trustSrc = function(src) {
             return $sce.trustAsResourceUrl(src);
         };
