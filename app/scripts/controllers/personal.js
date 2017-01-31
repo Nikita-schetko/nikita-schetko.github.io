@@ -22,6 +22,9 @@ angular.module('personalModule')
                 console.log($scope.items);
                 });
         };
+        $scope.removeImdbRatings = function () {
+            $('script[src^="https://p.media-imdb.com/static-content/documents/v1/title/"]').remove();
+        };
         $scope.finished = function() {
             $('.dropdown-toggle').dropdown();
         };
