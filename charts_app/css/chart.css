@@ -1,0 +1,45 @@
+.menu-nav {
+    padding-left: 50px;
+	min-height: 25px;
+}
+
+.menu-nav div {
+	float:left; 
+	margin-left:12px;
+}
+
+.menu-btn {
+	color: #000;
+	cursor: pointer;
+	background-color:#fff;
+	border:1px solid #cccccc;
+	padding:4px 10px;
+	margin-right:0px;
+	margin-left:0px;
+	font-size: 12px;
+}
+
+.menu-btn:hover {
+	background-color:#99bbdd;
+	border-color:#6688aa;
+}
+
+.dropdown-header {
+	background-color: #eeeeee ;
+	color: #000;
+	font-weight: bold;
+}
+
+.dropdown-menuitem {
+	font-size: 12px;
+}
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+	color: #fff;
+      background-image: url('images/arrow.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    height:20px;
+    width:100px;
+    display:block;
+}
