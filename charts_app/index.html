@@ -254,15 +254,15 @@
           </font>
           <br>
           <form method="POST" action="search.php"><input type="hidden" name="redirect" value="/view.php?symbol=CAG">
-            <input name="symbol" value="Enter Symbol (e.g. SPY)" id="symbol" onclick="handleClick(this.id)" size="40" style="color: #6b6b6b; border: 1px solid #161e5f; "
+            <input name="symbol" value="Enter Symbol (e.g. SPY)" id="symbol" onclick="handleClick(this.id)" size="40" style="color: #6b6b6b; border: 1px solid #161e5f; width:90%;"
               align="center"><input type="image" src="images/symsearch.png" width=25 height=25>
               <br>
+          </form>
               <font color="gray" face="Helvetica" size="1"><a href="how_it_works.php" class="headerlink">HOW IT WORKS</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="trade_signals_all.php" class="headerlink">TRADE SIGNALS</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="screener.php"
                   class="headerlink">SCREENER</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="my_portfolio.php" class="headerlink">MY PORTFOLIO</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
                     class="headerlink" href="help.php">HELP</a></font>
-          </form>
         </td>
       </tr>
     </table>
@@ -376,7 +376,7 @@
     </div>
 	<script src="./js/modalwindowScript.js"></script>
     <br><b>ConAgra Foods Inc.</b> (CAG)<br>Equity - <a href="http://www.wingcharts.com/?sector=Consumer Staples">Consumer Staples</a>    - Packaged Foods & Meats
-    <p>&nbsp;
+    <d>&nbsp;
       <table cellpadding="1" cellspacing="1" class="container-table">
         <tr>
           <td>
@@ -392,18 +392,19 @@
       <table cellpadding="1" cellspacing="1" border="1" class="container-table" bordercolor="#161e5f">
         <tr>
           <td>
-                  <a class="btn btn-primary" href="#">CHART & QUANTFORECAST</a hr>
-				  <a class="btn btn-primary" href="indicators.php?symbol=CAG">INDICATORS DASHBOARD</a>
-				  <a class="btn btn-primary" href="trade_signals.php?symbol=CAG">TRADE SIGNALS</a>
+          <div class="btn-group btn-group-justified btn-charts-group" role="group" aria-label="Justified button group">
+            <a class="btn btn-primary" href="#">CHART & QUANTFORECAST</a hr>
+            <a class="btn btn-primary" href="indicators.php?symbol=CAG">INDICATORS DASHBOARD</a>
+            <a class="btn btn-primary" href="trade_signals.php?symbol=CAG">TRADE SIGNALS</a>
+          </div>
           </td>
         </tr>
         <tr>
           <td>
 
             <div class="menu-nav chart-editor" role="tablist">
-              <table>
-                <tr>
-                  <td width="50%">
+              <div class="text-center">
+                  <div class="wrapper-nowrap">
                     <div role="presentation" class="dropdown">
                       <button class="menu-btn dropdown-toggle" id="main" type="button" data-toggle="dropdown">Price Chart Type</button>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="main">
@@ -420,42 +421,38 @@
                         <!-- <li class="dropdown-menuitem" id="sma100" role="presentation"><a role="menuitem">100SMA</a></li> -->
                         <li class="dropdown-menuitem" id="sma200" role="presentation"><a role="menuitem">200SMA</a></li>
                         <!-- <li class="dropdown-header"><b>Exp. Moving Average</b></li>
-				<li class="dropdown-menuitem" id="ema9" role="presentation"><a role="menuitem">9EMA</a></li>
-				<li class="dropdown-menuitem" id="ema12" role="presentation"><a role="menuitem">12EMA</a></li>
-				<li class="dropdown-menuitem" id="ema26" role="presentation"><a role="menuitem">26EMA</a></li> -->
+                                                            <li class="dropdown-menuitem" id="ema9" role="presentation"><a role="menuitem">9EMA</a></li>
+                                                            <li class="dropdown-menuitem" id="ema12" role="presentation"><a role="menuitem">12EMA</a></li>
+                                                            <li class="dropdown-menuitem" id="ema26" role="presentation"><a role="menuitem">26EMA</a></li> -->
                         <li class="dropdown-header"><b>Bollinger Band</b></li>
                         <li class="dropdown-menuitem" id="bb20" role="presentation"><a role="menuitem">20-Day Boll Band</a></li>
                         <!--<li class="dropdown-header"><b>Volatility</b></li>
-				<li class="dropdown-menuitem" id="vol20" role="presentation"><a role="menuitem">20-Day Vol</a></li>
-				 <li class="dropdown-menuitem" id="vol50" role="presentation"><a role="menuitem">50-Day Vol</a></li>
-				<li class="dropdown-menuitem" id="vol100" role="presentation"><a role="menuitem">100-Day Vol</a></li>
-				<li class="dropdown-menuitem" id="vol200" role="presentation"><a role="menuitem">200-Day Vol</a></li> -->
+                                                            <li class="dropdown-menuitem" id="vol20" role="presentation"><a role="menuitem">20-Day Vol</a></li>
+                                                            <li class="dropdown-menuitem" id="vol50" role="presentation"><a role="menuitem">50-Day Vol</a></li>
+                                                            <li class="dropdown-menuitem" id="vol100" role="presentation"><a role="menuitem">100-Day Vol</a></li>
+                                                            <li class="dropdown-menuitem" id="vol200" role="presentation"><a role="menuitem">200-Day Vol</a></li> -->
                         <li class="dropdown-header"><b>Momentum Indicators</b></li>
                         <li class="dropdown-menuitem" id="macd" role="presentation"><a role="menuitem">MACD</a></li>
                         <li class="dropdown-menuitem" id="rsi" role="presentation"><a role="menuitem">RSI</a></li>
                         <li class="dropdown-menuitem" id="stoch" role="presentation"><a role="menuitem">Stochastic</a></li>
                       </ul>
                     </div>
-                  </td>
-                  <td width="50%" align="center">
-                    <div class="checkbox">
-                      <label>
-				<input id="forecast" type="checkbox" checked> Avg QuantForecast 
-			</label>
-                      <label>
-				<input id="forecastmin" type="checkbox" checked> Best 
-			</label>
-                      <label>
-				<input id="forecastmax" type="checkbox" checked> Worst 
-			</label>
-                    </div>
-                  </td>
-                  <td align="center" width="50">
-                    <div class="fb-like" data-href="http://www.facebook.com/WingCharts" data-layout="button_count" data-action="like" data-size="small"
-                      data-show-faces="true" data-share="false"></div>
-            </td>
-            </tr>
-            </table>
+                  </div>
+                <div class="checkbox">
+                  <label>
+                      <input id="forecast" type="checkbox" checked> Avg QuantForecast 
+                    </label>
+                  <label>
+                      <input id="forecastmin" type="checkbox" checked> Best 
+                    </label>
+                  <label>
+                      <input id="forecastmax" type="checkbox" checked> Worst 
+                    </label>
+                </div>
+                <!--<div class="fb-like" data-href="http://www.facebook.com/WingCharts" data-layout="button_count" data-action="like" data-size="small"
+                  data-show-faces="true" data-share="false">
+                </div>-->
+              </div>
             </div>
             <div id="chart1" style="min-width: 310px; max-width: 800px;  margin: 0 auto"></div>
             <center>

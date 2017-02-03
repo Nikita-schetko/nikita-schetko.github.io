@@ -1,12 +1,12 @@
 .menu-nav {
-    padding-left: 50px;
+    /*padding-left: 50px;*/
 	min-height: 25px;
 }
 
-.menu-nav div {
+/*.menu-nav div {
 	float:left; 
 	margin-left:12px;
-}
+}*/
 
 .menu-btn {
 	color: #000;
