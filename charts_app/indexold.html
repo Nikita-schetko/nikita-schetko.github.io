@@ -1,0 +1,1245 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <title>WingCharts - ConAgra Foods Inc. (CAG) - QuantForecast</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="WingCharts is a quantitative technical analysis framework with daily forecasts on US Stocks, Indices, ETFs, Futures and Forex using pattern recognition.">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <!-- Place favicon.ico in the root directory -->
+
+    
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/js/jquery-ui.css">
+    <link rel="stylesheet" href="/js/jquery-ui.theme.css">
+    <script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script src="/js/jquery-ui.js" type="text/javascript"></script>
+    <script src="/js/datepicker.js"></script>
+    <script src="/js/jquery.mobile.datepicker.js"></script>
+    <script src="/js/jquery.simplemodal.js"></script>
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/custom-additional.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script>
+
+        function handleClick(id) {
+          if (document.getElementById(id).value == "Enter Symbol (e.g. SPY)") {
+            document.getElementById(id).value = "";
+          }
+        };
+        function hideLoader() {
+          document.getElementById('loader').style.display = 'none';
+        };
+    </script>   
+  </head>
+<body onload="hideLoader()">
+	<div id="fb-root"></div>
+	<script>
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<center>
+		<div id="signupModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Sign Up As A WingCharts Member For FREE</h2>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="https://www.wingcharts.com/signup.php">
+						<center>Already have an account? <a href="#main" onclick="document.getElementById('loginModal').style.display='block'">Login Here.</a></center>
+						<table cellpadding="1" cellspacing="1" border="1" width="750" bordercolor="#161e5f">
+							<tr>
+								<td width="400">
+									<table cellpadding="5" align="center">
+										<tr>
+											<td align="right" width="200">
+												<b>Email Address</b>
+											</td>
+											<td align="left" width="200"> <input name="email" value="" width="50"0></td>
+										</tr>
+										<tr>
+											<td align="right" width="200">
+												<b>Password</b></td>
+											<td align="left" width="200"> <input name="password" type="password"></td>
+										</tr>
+										<tr>
+											<td align="right" width="200">
+												<b>Confirm Your Password</b></td>
+											<td align="left" width="200"> <input name="password2" type="password"></td>
+										</tr>
+										<tr>
+											<td align="right" width="200">
+												<b>First Name</b></td>
+											<td align="left" width="200"> <input name="first_name" value="" cols="500"></td>
+										</tr>
+										<tr>
+											<td align="right" width="200">
+												<b>Last Name</b></td>
+											<td align="left" width="200"> <input name="last_name" value="" cols="500"></td>
+										</tr>
+										<tr>
+											<td align="right" width="200">
+												<b>Country</b></td>
+											<td align="left" width="200"> <select name="country"><option value="">-- Please Select --</option></select></td>
+										</tr>
+										<tr>
+											<td align="right" width="200">
+												<b>WingCharts Notification</b></td>
+											<td align="left" width="200">
+												<input name="notification" type="checkbox" checked> Receive an email notification when there are new features, service
+												updates and releases on WingCharts<br>
+											</td>
+										</tr>
+										<tr>
+											<td align="right" width="200">
+												<b>Terms of Service</b></td>
+											<td align="left" width="200">
+												<input name="terms" type="checkbox"> I have read and agreed to the <a href="terms_and_privacy.php" target="_blank">Terms of Service and Privacy Policy</a>.
+											</td>
+										</tr>
+										<tr>
+												<td colspan="2">
+													<center> <input type="submit" value="Sign Up Now" border="0" name="submit" alt="">
+												</td>
+										</tr>
+									</table>
+					</form>
+					</td>
+					<td valign="top" size=350>
+						<table cellpadding="5" align="center">
+							<tr>
+								<td>
+									<center>
+										<h4>
+											<font color="#2392e4">
+												<u>What You Will Get</u>
+											</font>
+										</h4>
+									</center>
+									 
+										<ul>
+											<li><b>Complete QuantForecast w/ Statistics</b>
+												<br>See complete pattern information, historical return and % of the time positive statistics of the pattern
+												matches, as well as the matching dates which you can drill into the chart. View up to 20 QuantForecasts per day.<br>&nbsp;
+											</li>
+											<li><b>Customizable QuantForecast</b>
+												<br>Customize the criteria of the QuantForecast with your own combination of indicators and patterns.<br>&nbsp;
+											</li>
+											<li><b>My Portfolio w/ Alerts</b>
+												<br>Track and get daily notification email with QuantForecast and RoboCommentary for up to 10 symbols.<br>&nbsp;
+											</li>
+											<li><b>My Forecasts</b>
+												<br>Save our automated and your own custom QuantForecasts and track the actual performance over time<br>&nbsp;
+											</li>
+										</ul>
+										<br>
+										<a href="premium.php">>>> Want More? Sign Up for a Premium Account</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+					</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<center>&nbsp;</center>
+				</div>
+			</div>
+		</div>
+		<div id="loginModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Login to Your WingCharts Account</h2>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="https://www.wingcharts.com/login.php">
+						<input type="hidden" name="redirect" value="/view.php?symbol=CAG">
+						<table cellpadding="1" cellspacing="1" border="1" width="750" bordercolor="#161e5f">
+							<tr>
+								<td align="right"width=400><b> Email Address </b></td>
+								<td align="left"> <input name="email" value="" width=400></td>
+							</tr>
+							<tr>
+								<td align="right"width=350><b> Password </b></td>
+								<td align="left"> <input name="password" type="password"></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<center> <input type="submit" name="submit" value="Submit"></td>
+							</tr>
+						</table>
+					</form>
+					>> <a href="forgot_password.php">Forgot Your Password?</a>
+					<br><br> >> <a href="signup.php">Do Not Have An Account? Sign Up Here</a> </div>
+				<div class="modal-footer">
+					<center>&nbsp;</center>
+				</div>
+			</div>
+		</div>
+		<script>
+			var modal3 = document.getElementById('signupModal');
+			var modal4 = document.getElementById('loginModal');
+
+			span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function (event) {
+
+				modal3.style.display = "none";
+
+			}
+
+			span = document.getElementsByClassName("close")[1];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function (event) {
+
+				modal4.style.display = "none";
+
+			}
+
+			function windowOut(event) {
+				if (event.target == modal3) {
+					modal.style.display = "none";
+				} else if (event.target == modal4) {
+					modal2.style.display = "none";
+				}
+
+
+			}
+
+
+			window.addEventListener("click", windowOut);
+		</script>
+		<center>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({
+					google_ad_client: "ca-pub-6219286942711753",
+					enable_page_level_ads: true
+				});
+			</script>
+		</center>
+		<table cellpadding="1" cellspacing="1" width="800">
+			<tr>
+				<td align="center" valign="bottom">
+					<a href="http://www.wingcharts.com"><img src="images/image002-small.jpg" style="vertical-align: baseline;">
+						<font size="1">BETA</font>
+					</a>
+					<br>
+					<font color="#6b6b6b" face="Helvetica" size="1">Technical Analysis with a Quantitative Edge</font>
+					<p>
+				</td>
+				<td align="right" valign="bottom">
+					<font size="1">
+						Welcome Back Vincent Yip ( <a href="my_account.php">MY ACCOUNT</a> &nbsp;| &nbsp;<a href="logout.php">LOGOUT</a> )
+					</font>
+					<br>
+					<form method="POST" action="search.php"><input type="hidden" name="redirect" value="/view.php?symbol=CAG">
+						<input name="symbol" value="Enter Symbol (e.g. SPY)" id="symbol" onclick="handleClick(this.id)" size="40" style="color: #6b6b6b; border: 1px solid #161e5f; "
+										align="center"><input type="image" src="images/symsearch.png" width=25 height=25>
+							<br>
+							<font color="gray" face="Helvetica" size="1"><a href="how_it_works.php" class="headerlink">HOW IT WORKS</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="trade_signals_all.php"
+												class="headerlink">TRADE SIGNALS</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="screener.php" class="headerlink">SCREENER</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+													href="my_portfolio.php" class="headerlink">MY PORTFOLIO</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="headerlink" href="help.php">HELP</a></font>
+					</form>
+				</td>
+			</tr>
+		</table>
+		<img src="images/line.png">
+		<div id="loader" class="loader"></div>
+		<link rel="stylesheet" href="css/chart.css">
+		<script type="text/javascript" src="js/lib/highstock.js"></script>
+		<!--<script type="text/javascript" src="js/lib/highcharts-more.js"></script>-->
+		<script type="text/javascript" src="js/lib/exporting.js"></script>
+		<script type="text/javascript" src="js/lib/offline-exporting.js"></script>
+		<script type="text/javascript" src="js/mainChartsScript.js"></script>	
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Customize & Run QuantForecast</h2>
+				</div>
+				<div class="modal-body">
+					<form method="POST">
+						<center>
+							<p>Add / Edit Parameters and Press the Run button. Our algorithm will search for all historical matches with your criteria
+								and compute a new QuantForecast.</p>
+						</center>
+						<table width="100%" cellpadding="5" id="table">
+							<tr>
+								<td bgcolor="#2392e4" align="left">
+									<font color="white" face="Helvetica" size="2"><b>INDICATOR / PATTERN</b></font>
+								</td>
+								<td bgcolor="#2392e4">
+									<font color="white" face="Helvetica" size="2"><b>CRITERIA</b></font>
+								</td>
+								<td bgcolor="#2392e4" width=20>
+									<font color="white" face="Helvetica" size="2"><b></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td bgcolor="white"><select name="pattern[]" onchange="dropdownChg(this);"><option value="">--  Patterns  --</option><option value="">-- Indicators --</option><option value="ADJ_CLOSE_20DMA_DIST" >20SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_50DMA_DIST" >50SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_100DMA_DIST" >100SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_200DMA_DIST" >200SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_9EMA_DIST" >9EMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20HIBOLL_DIST" >20-Day Upper Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20LOBOLL_DIST" >20-Day Lower Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_1226_DIST" >MACD Dist Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDSIGNAL" >MACD Signal Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDHIST" >MACD Histogram: Match Value of N/A</option><option value="CHG_14RSI" >Custom RSI: Match Value of N/A</option><option value="TREND" >Trend Composite: Match Value of N/A</option><option value="TREND_3DMA" >Trend Composite 3MA: Match Value of N/A</option><option value="TREND_5DMA" >Trend Composite 5MA: Match Value of N/A</option><option value="TREND_10DMA" >Trend Composite 10MA: Match Value of N/A</option><option value="TRUERANGE_50CHOPPY" >50-Day Choppiness Index: Match Value of N/A</option><option value="LOCALPEAK_NO" >Current Peak / Trough #: Match Value of N/A</option><option value="CHG_14REALRSI" >RSI: Match Value of N/A</option><option value="STOCHASTIC_14K" >Fast Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA" >Slow Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA_3DMA" >Slow Stochastics D Line: Match Value of N/A</option><option value="CLOSEOPEN" >Close - Open: Match Value of 0.00%</option><option value="CLOSELOW" >Close - Low: Match Value of 0.00%</option><option value="HIGHCLOSE" >High - Close: Match Value of 0.00%</option></select></td>
+								<td bgcolor="white">
+									 Fast Stochastics K Line
+										< Slow Stochastics K Line And 9EMA above the 20DMA 
+								</td>
+								<td bgcolor="white"><input type="image" src="images/delete.png" onclick="return removeLine(this);"></td>
+							</tr>
+							<tr>
+								<td bgcolor="white"><select name="pattern[]" onchange="dropdownChg(this);"><option value="">--  Patterns  --</option><option value="">-- Indicators --</option><option value="ADJ_CLOSE_20DMA_DIST" >20SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_50DMA_DIST" >50SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_100DMA_DIST" >100SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_200DMA_DIST" >200SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_9EMA_DIST" >9EMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20HIBOLL_DIST" >20-Day Upper Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20LOBOLL_DIST" >20-Day Lower Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_1226_DIST" >MACD Dist Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDSIGNAL" >MACD Signal Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDHIST" >MACD Histogram: Match Value of N/A</option><option value="CHG_14RSI" >Custom RSI: Match Value of N/A</option><option value="TREND" >Trend Composite: Match Value of N/A</option><option value="TREND_3DMA" >Trend Composite 3MA: Match Value of N/A</option><option value="TREND_5DMA" >Trend Composite 5MA: Match Value of N/A</option><option value="TREND_10DMA" >Trend Composite 10MA: Match Value of N/A</option><option value="TRUERANGE_50CHOPPY" >50-Day Choppiness Index: Match Value of N/A</option><option value="LOCALPEAK_NO" >Current Peak / Trough #: Match Value of N/A</option><option value="CHG_14REALRSI" >RSI: Match Value of N/A</option><option value="STOCHASTIC_14K" >Fast Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA" >Slow Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA_3DMA" >Slow Stochastics D Line: Match Value of N/A</option><option value="CLOSEOPEN" >Close - Open: Match Value of 0.00%</option><option value="CLOSELOW" >Close - Low: Match Value of 0.00%</option><option value="HIGHCLOSE" >High - Close: Match Value of 0.00%</option></select></td>
+								<td bgcolor="white">
+									 9EMA Trend > 0 
+								</td>
+								<td bgcolor="white"><input type="image" src="images/delete.png" onclick="return removeLine(this);"></td>
+							</tr>
+							<tr>
+								<td bgcolor="white"><select name="pattern[]" onchange="dropdownChg(this);"><option value="">--  Patterns  --</option><option value="">-- Indicators --</option><option value="ADJ_CLOSE_20DMA_DIST" >20SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_50DMA_DIST" >50SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_100DMA_DIST" >100SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_200DMA_DIST" >200SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_9EMA_DIST" >9EMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20HIBOLL_DIST" >20-Day Upper Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20LOBOLL_DIST" >20-Day Lower Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_1226_DIST" >MACD Dist Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDSIGNAL" >MACD Signal Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDHIST" >MACD Histogram: Match Value of N/A</option><option value="CHG_14RSI" >Custom RSI: Match Value of N/A</option><option value="TREND" >Trend Composite: Match Value of N/A</option><option value="TREND_3DMA" >Trend Composite 3MA: Match Value of N/A</option><option value="TREND_5DMA" >Trend Composite 5MA: Match Value of N/A</option><option value="TREND_10DMA" >Trend Composite 10MA: Match Value of N/A</option><option value="TRUERANGE_50CHOPPY" >50-Day Choppiness Index: Match Value of N/A</option><option value="LOCALPEAK_NO" >Current Peak / Trough #: Match Value of N/A</option><option value="CHG_14REALRSI" >RSI: Match Value of N/A</option><option value="STOCHASTIC_14K" >Fast Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA" >Slow Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA_3DMA" >Slow Stochastics D Line: Match Value of N/A</option><option value="CLOSEOPEN" >Close - Open: Match Value of 0.00%</option><option value="CLOSELOW" >Close - Low: Match Value of 0.00%</option><option value="HIGHCLOSE" >High - Close: Match Value of 0.00%</option></select></td>
+								<td bgcolor="white">
+									 20SMA Trend
+										< 0 
+								</td>
+								<td bgcolor="white"><input type="image" src="images/delete.png" onclick="return removeLine(this);"></td>
+							</tr>
+							<tr>
+								<td bgcolor="white"><select name="pattern[]" onchange="dropdownChg(this);"><option value="">--  Patterns  --</option><option value="">-- Indicators --</option><option value="ADJ_CLOSE_20DMA_DIST" >20SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_50DMA_DIST" >50SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_100DMA_DIST" >100SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_200DMA_DIST" >200SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_9EMA_DIST" >9EMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20HIBOLL_DIST" >20-Day Upper Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20LOBOLL_DIST" >20-Day Lower Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_1226_DIST" >MACD Dist Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDSIGNAL" >MACD Signal Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDHIST" >MACD Histogram: Match Value of N/A</option><option value="CHG_14RSI" >Custom RSI: Match Value of N/A</option><option value="TREND" >Trend Composite: Match Value of N/A</option><option value="TREND_3DMA" >Trend Composite 3MA: Match Value of N/A</option><option value="TREND_5DMA" >Trend Composite 5MA: Match Value of N/A</option><option value="TREND_10DMA" >Trend Composite 10MA: Match Value of N/A</option><option value="TRUERANGE_50CHOPPY" >50-Day Choppiness Index: Match Value of N/A</option><option value="LOCALPEAK_NO" >Current Peak / Trough #: Match Value of N/A</option><option value="CHG_14REALRSI" >RSI: Match Value of N/A</option><option value="STOCHASTIC_14K" >Fast Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA" >Slow Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA_3DMA" >Slow Stochastics D Line: Match Value of N/A</option><option value="CLOSEOPEN" >Close - Open: Match Value of 0.00%</option><option value="CLOSELOW" >Close - Low: Match Value of 0.00%</option><option value="HIGHCLOSE" >High - Close: Match Value of 0.00%</option></select></td>
+								<td bgcolor="white">
+									 50SMA Trend > 0 
+								</td>
+								<td bgcolor="white"><input type="image" src="images/delete.png" onclick="return removeLine(this);"></td>
+							</tr>
+							<tr>
+								<td bgcolor="white"><select name="pattern[]" onchange="dropdownChg(this);"><option value="">--  Patterns  --</option><option value="">-- Indicators --</option><option value="ADJ_CLOSE_20DMA_DIST" >20SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_50DMA_DIST" >50SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_100DMA_DIST" >100SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_200DMA_DIST" >200SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_9EMA_DIST" >9EMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20HIBOLL_DIST" >20-Day Upper Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20LOBOLL_DIST" >20-Day Lower Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_1226_DIST" >MACD Dist Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDSIGNAL" >MACD Signal Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDHIST" >MACD Histogram: Match Value of N/A</option><option value="CHG_14RSI" >Custom RSI: Match Value of N/A</option><option value="TREND" >Trend Composite: Match Value of N/A</option><option value="TREND_3DMA" >Trend Composite 3MA: Match Value of N/A</option><option value="TREND_5DMA" >Trend Composite 5MA: Match Value of N/A</option><option value="TREND_10DMA" >Trend Composite 10MA: Match Value of N/A</option><option value="TRUERANGE_50CHOPPY" >50-Day Choppiness Index: Match Value of N/A</option><option value="LOCALPEAK_NO" >Current Peak / Trough #: Match Value of N/A</option><option value="CHG_14REALRSI" >RSI: Match Value of N/A</option><option value="STOCHASTIC_14K" >Fast Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA" >Slow Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA_3DMA" >Slow Stochastics D Line: Match Value of N/A</option><option value="CLOSEOPEN" >Close - Open: Match Value of 0.00%</option><option value="CLOSELOW" >Close - Low: Match Value of 0.00%</option><option value="HIGHCLOSE" >High - Close: Match Value of 0.00%</option></select></td>
+								<td bgcolor="white">
+									 100SMA Trend > 0 
+								</td>
+								<td bgcolor="white"><input type="image" src="images/delete.png" onclick="return removeLine(this);"></td>
+							</tr>
+							<tr>
+								<td bgcolor="white"><select name="pattern[]" onchange="dropdownChg(this);"><option value="">--  Patterns  --</option><option value="">-- Indicators --</option><option value="ADJ_CLOSE_20DMA_DIST" >20SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_50DMA_DIST" >50SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_100DMA_DIST" >100SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_200DMA_DIST" >200SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_9EMA_DIST" >9EMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20HIBOLL_DIST" >20-Day Upper Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20LOBOLL_DIST" >20-Day Lower Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_1226_DIST" >MACD Dist Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDSIGNAL" >MACD Signal Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDHIST" >MACD Histogram: Match Value of N/A</option><option value="CHG_14RSI" >Custom RSI: Match Value of N/A</option><option value="TREND" >Trend Composite: Match Value of N/A</option><option value="TREND_3DMA" >Trend Composite 3MA: Match Value of N/A</option><option value="TREND_5DMA" >Trend Composite 5MA: Match Value of N/A</option><option value="TREND_10DMA" >Trend Composite 10MA: Match Value of N/A</option><option value="TRUERANGE_50CHOPPY" >50-Day Choppiness Index: Match Value of N/A</option><option value="LOCALPEAK_NO" >Current Peak / Trough #: Match Value of N/A</option><option value="CHG_14REALRSI" >RSI: Match Value of N/A</option><option value="STOCHASTIC_14K" >Fast Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA" >Slow Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA_3DMA" >Slow Stochastics D Line: Match Value of N/A</option><option value="CLOSEOPEN" >Close - Open: Match Value of 0.00%</option><option value="CLOSELOW" >Close - Low: Match Value of 0.00%</option><option value="HIGHCLOSE" >High - Close: Match Value of 0.00%</option></select></td>
+								<td bgcolor="white">
+									 200SMA Trend > 0 
+								</td>
+								<td bgcolor="white"><input type="image" src="images/delete.png" onclick="return removeLine(this);"></td>
+							</tr>
+						</table>
+						<p align="left"><input type="image" src="images/saveforecast.png" onclick="return addCriteria();">
+							  Add Criteria 
+						</p>
+						<p>
+							<center><input type="image" src="images/run.png" name="runforecast" value="Run"></form>
+				</div>
+				<div class="modal-footer">
+					<center>&nbsp;</center>
+				</div>
+			</div>
+		</div>
+		<!-- The Modal -->
+		<div id="shareLink" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Share QuantForecast for CAG</h2>
+				</div>
+				<div class="modal-body">
+					<form method="POST">
+						<center>
+							<p>Copy and paste the following link to share this page</p><br>
+							<input name="link" class="linkclass" value="http://www.wingcharts.com/?symbol=CAG&id=05d8632563" size=60>
+							<br>
+							<input type="button" value="Copy to Clipboard" onclick="copyToClipboard();">
+				</div>
+				<div class="modal-footer">
+					<center>&nbsp;</center>
+				</div>
+			</div>
+		</div>
+		<script>
+			// Get the modal
+			var modal = document.getElementById('myModal');
+
+			var modal2 = document.getElementById('shareLink');
+
+
+			function copyToClipboard() {
+				var copyTextarea = document.querySelector('.linkclass');
+				copyTextarea.select();
+
+				try {
+					var successful = document.execCommand('copy');
+				} catch (err) {}
+
+			}
+			var map = {
+				"ADJ_CLOSE_20DMA_DIST": "20SMA Distance =~ 0.00%",
+				"ADJ_CLOSE_50DMA_DIST": "50SMA Distance =~ 0.00%",
+				"ADJ_CLOSE_100DMA_DIST": "100SMA Distance =~ 0.00%",
+				"ADJ_CLOSE_200DMA_DIST": "200SMA Distance =~ 0.00%",
+				"ADJ_CLOSE_9EMA_DIST": "9EMA Distance =~ 0.00%",
+				"ADJ_CLOSE_20HIBOLL_DIST": "20-Day Upper Boll Band Distance =~ 0.00%",
+				"ADJ_CLOSE_20LOBOLL_DIST": "20-Day Lower Boll Band Distance =~ 0.00%",
+				"ADJ_CLOSE_1226_DIST": "MACD Dist Line =~ N/A",
+				"ADJ_CLOSE_1226_MACDSIGNAL": "MACD Signal Line =~ N/A",
+				"ADJ_CLOSE_1226_MACDHIST": "MACD Histogram =~ N/A",
+				"CHG_14RSI": "Custom RSI =~ N/A",
+				"TREND": "Trend Composite =~ N/A",
+				"TREND_3DMA": "Trend Composite 3MA =~ N/A",
+				"TREND_5DMA": "Trend Composite 5MA =~ N/A",
+				"TREND_10DMA": "Trend Composite 10MA =~ N/A",
+				"TRUERANGE_50CHOPPY": "50-Day Choppiness Index =~ N/A",
+				"LOCALPEAK_NO": "Current Peak / Trough # =~ N/A",
+				"CHG_14REALRSI": "RSI =~ N/A",
+				"STOCHASTIC_14K": "Fast Stochastics K Line =~ N/A",
+				"STOCHASTIC_14K_3DMA": "Slow Stochastics K Line =~ N/A",
+				"STOCHASTIC_14K_3DMA_3DMA": "Slow Stochastics D Line =~ N/A",
+				"CLOSEOPEN": "Close - Open =~ 0.00%",
+				"CLOSELOW": "Close - Low =~ 0.00%",
+				"HIGHCLOSE": "High - Close =~ 0.00%"
+			}
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[2];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function (event) {
+				modal.style.display = "none";
+
+
+			}
+
+			span = document.getElementsByClassName("close")[3];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function (event) {
+
+				modal2.style.display = "none";
+
+			}
+
+
+			// When the user clicks anywhere outside of the modal, close it
+			function windowOutView(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				} else if (event.target == modal2) {
+					modal2.style.display = "none";
+				}
+
+
+			}
+
+
+			window.addEventListener("click", windowOutView);
+
+
+			function removeLine(currcell) {
+				currcell.parentNode.parentNode.parentNode.removeChild(currcell.parentNode.parentNode);
+				return false;
+			}
+
+			function addCriteria() {
+				var modal = document.getElementById('table');
+				var newspan = document.createElement('tr');
+				newspan.innerHTML =
+					'<tr>\
+					<td bgcolor="white"><select name="pattern[]" onchange="dropdownChg(this);"><option value="">--  Patterns  --</option><option value="">-- Indicators --</option><option value="ADJ_CLOSE_20DMA_DIST" >20SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_50DMA_DIST" >50SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_100DMA_DIST" >100SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_200DMA_DIST" >200SMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_9EMA_DIST" >9EMA Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20HIBOLL_DIST" >20-Day Upper Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_20LOBOLL_DIST" >20-Day Lower Boll Band Distance: Match Value of 0.00%</option><option value="ADJ_CLOSE_1226_DIST" >MACD Dist Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDSIGNAL" >MACD Signal Line: Match Value of N/A</option><option value="ADJ_CLOSE_1226_MACDHIST" >MACD Histogram: Match Value of N/A</option><option value="CHG_14RSI" >Custom RSI: Match Value of N/A</option><option value="TREND" >Trend Composite: Match Value of N/A</option><option value="TREND_3DMA" >Trend Composite 3MA: Match Value of N/A</option><option value="TREND_5DMA" >Trend Composite 5MA: Match Value of N/A</option><option value="TREND_10DMA" >Trend Composite 10MA: Match Value of N/A</option><option value="TRUERANGE_50CHOPPY" >50-Day Choppiness Index: Match Value of N/A</option><option value="LOCALPEAK_NO" >Current Peak / Trough #: Match Value of N/A</option><option value="CHG_14REALRSI" >RSI: Match Value of N/A</option><option value="STOCHASTIC_14K" >Fast Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA" >Slow Stochastics K Line: Match Value of N/A</option><option value="STOCHASTIC_14K_3DMA_3DMA" >Slow Stochastics D Line: Match Value of N/A</option><option value="CLOSEOPEN" >Close - Open: Match Value of 0.00%</option><option value="CLOSELOW" >Close - Low: Match Value of 0.00%</option><option value="HIGHCLOSE" >High - Close: Match Value of 0.00%</option></select></td>\
+					<td bgcolor="white"></td>\
+					<td bgcolor="white"><input type="image" src="images/delete.png"></td>\
+				</tr>';
+				//newspan.innerHTML = '<tr><td>YES</td></tr>';			
+				modal.appendChild(newspan);
+				return false;
+			}
+
+			function dropdownChg(currselect) {
+
+				var str = map[currselect.options[currselect.selectedIndex].value];
+
+				var tr = currselect.parentNode.parentNode;
+
+				var cells = tr.getElementsByTagName('td');
+
+				cells[1].innerHTML = ' ' + str + '</font>';
+			}
+		</script>
+		<br><b>ConAgra Foods Inc.</b> (CAG)<br>Equity - <a href="http://www.wingcharts.com/?sector=Consumer Staples">Consumer Staples</a>		- Packaged Foods & Meats
+		<p>&nbsp;
+			<table cellpadding="1" cellspacing="1" width="800">
+				<tr>
+					<td>
+						<font size="1">As of 2017-02-02</font>
+					</td>
+					<td align="right">
+						<p valign="center">
+							<img src="images/image004.png" width=16 height=16>
+							<font size="1"><a href="add_alert.php?symbol=CAG">Add to My Portfolio</a></font>
+					</td>
+				</tr>
+			</table>
+			<table cellpadding="1" cellspacing="1" border="1" width="800" bordercolor="#161e5f">
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<td align="center" bgcolor="#161e5f" valign="top" width="150">
+									<font face="Arial Black" color="white" size="2">CHART & QUANTFORECAST</font>
+								</td>
+								<td align="center" bgcolor="white" valign="top" width="150">
+									<font face="Arial Black" size="2"><a href="indicators.php?symbol=CAG">INDICATORS DASHBOARD</a></font>
+								</td>
+								<td align="center" bgcolor="white" valign="top" width="100">
+									<font face="Arial Black" size="2"><a href="trade_signals.php?symbol=CAG">TRADE<br>SIGNALS</a></font>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table width="100%" cellpadding="5">
+							<tr>
+								<td bgcolor="#eeeeee">
+									 <b>Last</b></td>
+								<td bgcolor="#eeeeee">
+									 39.14</td>
+								<td bgcolor="#eeeeee">
+									 <b>Open</b></td>
+								<td bgcolor="#eeeeee">
+									 39.14</td>
+								<td bgcolor="#eeeeee">
+									 <b>High</b></td>
+								<td bgcolor="#eeeeee">
+									 39.15</td>
+								<td bgcolor="#eeeeee">
+									 <b>Volume</b></td>
+								<td bgcolor="#eeeeee">
+									 22,662</td>
+							</tr>
+							<tr>
+								<td bgcolor="white">
+									 <b>Prev Close</b></td>
+								<td bgcolor="white">
+									 38.94</td>
+								<td bgcolor="white">
+									 <b>Chg</b></td>
+								<td bgcolor="white">
+									 
+										<font  color="green">+0.20</font> (
+										<font  color="green">+0.51%</font>)</td>
+								<td bgcolor="white">
+									 <b>Low</b></td>
+								<td bgcolor="white">
+									 39.02</td>
+								<td bgcolor="white">
+									 <b>52-Week High/Low</b></td>
+								<td bgcolor="white">
+									 39.65 / 29.81</td>
+							</tr>
+							<tr>
+								<td bgcolor="#eeeeee">
+									 <b>Dividend Yield</b></td>
+								<td bgcolor="#eeeeee">
+									 2.05%</td>
+								<td bgcolor="#eeeeee">
+									 <b>Curr P/E</b></td>
+								<td bgcolor="#eeeeee">
+									 27.46</td>
+								<td bgcolor="#eeeeee">
+									 <b>P/B</b></td>
+								<td bgcolor="#eeeeee">
+									 3.83</td>
+								<td bgcolor="#eeeeee">
+									 <b>Short Ratio</b></td>
+								<td bgcolor="#eeeeee">
+									 1.44</td>
+							</tr>
+							<tr>
+								<td bgcolor="white">
+									 <b>2017 EPS Est</b></td>
+								<td bgcolor="white">
+									 1.69</td>
+								<td bgcolor="white">
+									 <b>1Yr Fwd P/E</b></td>
+								<td bgcolor="white">
+									 23.04</td>
+								<td bgcolor="white">
+									 <b>P/S</b></td>
+								<td bgcolor="white">
+									 1.52</td>
+								<td bgcolor="white">
+									 <b>PEG Ratio</b></td>
+								<td bgcolor="white">
+									 1.79</td>
+							</tr>
+						</table>
+						<div class="menu-nav chart-editor" role="tablist">
+							<table>
+								<tr>
+									<td width="50%">
+										<div role="presentation" class="dropdown">
+											<button class="menu-btn dropdown-toggle" id="main" type="button" data-toggle="dropdown">Price Chart Type</button>
+											<ul class="dropdown-menu" role="menu" aria-labelledby="main">
+												<li class="dropdown-menuitem" id="candlestick" role="presentation"><a role="menuitem">Candlestick</a></li>
+												<li class="dropdown-menuitem" id="line" role="presentation"><a role="menuitem">Line</a></li>
+											</ul>
+										</div>
+										<div role="presentation" class="dropdown">
+											<button class="menu-btn dropdown-toggle" id="overlays-indicators" type="button" data-toggle="dropdown">Overlays / Indicators</button>
+											<ul class="dropdown-menu" role="menu" aria-labelledby="overlays-indicators">
+												<li class="dropdown-header"><b>Simple Moving Average</b></li>
+												<!-- <li class="dropdown-menuitem" id="sma20" role="presentation"><a role="menuitem">20SMA</a></li> -->
+												<li class="dropdown-menuitem" id="sma50" role="presentation"><a role="menuitem">50SMA</a></li>
+												<!-- <li class="dropdown-menuitem" id="sma100" role="presentation"><a role="menuitem">100SMA</a></li> -->
+												<li class="dropdown-menuitem" id="sma200" role="presentation"><a role="menuitem">200SMA</a></li>
+												<!-- <li class="dropdown-header"><b>Exp. Moving Average</b></li>
+				<li class="dropdown-menuitem" id="ema9" role="presentation"><a role="menuitem">9EMA</a></li>
+				<li class="dropdown-menuitem" id="ema12" role="presentation"><a role="menuitem">12EMA</a></li>
+				<li class="dropdown-menuitem" id="ema26" role="presentation"><a role="menuitem">26EMA</a></li> -->
+												<li class="dropdown-header"><b>Bollinger Band</b></li>
+												<li class="dropdown-menuitem" id="bb20" role="presentation"><a role="menuitem">20-Day Boll Band</a></li>
+												<!--<li class="dropdown-header"><b>Volatility</b></li>
+				<li class="dropdown-menuitem" id="vol20" role="presentation"><a role="menuitem">20-Day Vol</a></li>
+				 <li class="dropdown-menuitem" id="vol50" role="presentation"><a role="menuitem">50-Day Vol</a></li>
+				<li class="dropdown-menuitem" id="vol100" role="presentation"><a role="menuitem">100-Day Vol</a></li>
+				<li class="dropdown-menuitem" id="vol200" role="presentation"><a role="menuitem">200-Day Vol</a></li> -->
+												<li class="dropdown-header"><b>Momentum Indicators</b></li>
+												<li class="dropdown-menuitem" id="macd" role="presentation"><a role="menuitem">MACD</a></li>
+												<li class="dropdown-menuitem" id="rsi" role="presentation"><a role="menuitem">RSI</a></li>
+												<li class="dropdown-menuitem" id="stoch" role="presentation"><a role="menuitem">Stochastic</a></li>
+											</ul>
+										</div>
+									</td>
+									<td width="50%" align="center">
+										<div class="checkbox">
+											<label>
+				<input id="forecast" type="checkbox" checked> Avg QuantForecast 
+			</label>
+											<label>
+				<input id="forecastmin" type="checkbox" checked> Best 
+			</label>
+											<label>
+				<input id="forecastmax" type="checkbox" checked> Worst 
+			</label>
+										</div>
+									</td>
+									<td align="center" width="50">
+										<div class="fb-like" data-href="http://www.facebook.com/WingCharts" data-layout="button_count" data-action="like" data-size="small"
+														data-show-faces="true" data-share="false"></div>
+						</td>
+						</tr>
+						</table>
+						</div>
+						<div id="chart1" style="min-width: 310px; height: 864px; margin: 0 auto"></div>
+						<center>
+							<font size="1">
+								<img valign="center" src="images/image010.png"><a href="#main" onclick="document.getElementById('myModal').style.display='block'">Customize QuantForecast</a>								&nbsp;&nbsp;
+								<a href="save_forecast.php?id=05d8632563"><img valign="center" src="images/saveforecast.png"> Save To My Forecasts</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="#" onclick="document.getElementById('shareLink').style.display='block'"> <img valign="center" src="images/image008.png">Share</a>
+							</font>
+							<p>
+								<p>
+									<center>
+										<font color="#161e5f" size=4>Latest QuantForecast</font>
+									</center>
+									 As Of 2017-02-01 <br>
+									<table width="800" cellpadding="1" cellspacing="1">
+										<tr>
+											<td align="center" bgcolor="#161e5f" valign="top" width="50%">
+												<font face="Helvetica" color="white" size="2">ROBOCOMMENTARY</font>
+												<table width="100%" cellpadding="5">
+													<tr>
+														<td bgcolor="white">
+															Long-term uptrend while near-term is mixed . Momentum is deteriorating with . That being said, Forecast points to higher
+															price but with choppy action </td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td align="center" bgcolor="#161e5f" valign="top" width="50%">
+												<font face="Helvetica" color="white" size="2">TECHNICAL PATTERN <a href="patterns_indicators.php" target="_blank">(?)</a></font>
+												<table width="100%" cellpadding="5">
+													<tr>
+														<td bgcolor="#2392e4" align="center" valign="center">
+															<font color="white" face="Helvetica" size="2"><b>TYPE</b></font>
+														</td>
+														<td bgcolor="#2392e4" valign="center">
+															<font color="white" face="Helvetica" size="2"><b>DESCRIPTION</b></font>
+														</td>
+														<td bgcolor="#2392e4" valign="center">
+															<font color="white" face="Helvetica" size="2"><b>CRITERIA  <a href="help.php#q5" target="_blank"><Font color="#161e5f">(?)</font></a></b></font>
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white" align="center" valign="center">
+															 Negative Divergence 
+														</td>
+														<td bgcolor="white" valign="center">
+															 Price is Moving Higher while Fast Stochastics is crossing Negatively 
+														</td>
+														<td bgcolor="white" valign="center">
+															 Fast Stochastics K Line
+																< Slow Stochastics K Line And 9EMA above the 20DMA 
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white" align="center" valign="center">
+															 Short-Term Up Trend 
+														</td>
+														<td bgcolor="white" valign="center">
+															 9-Day Exponential Moving Average is Trending Higher 
+														</td>
+														<td bgcolor="white" valign="center">
+															 9EMA Trend > 0 
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white" align="center" valign="center">
+															 Short-Term Down Trend 
+														</td>
+														<td bgcolor="white" valign="center">
+															 20-Day Simple Moving Average is Trending Lower 
+														</td>
+														<td bgcolor="white" valign="center">
+															 20SMA Trend
+																< 0 
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white" align="center" valign="center">
+															 Medium-Term Up Trend 
+														</td>
+														<td bgcolor="white" valign="center">
+															 50-Day Simple Moving Average is Trending Higher 
+														</td>
+														<td bgcolor="white" valign="center">
+															 50SMA Trend > 0 
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white" align="center" valign="center">
+															 Long-Term Up Trend 
+														</td>
+														<td bgcolor="white" valign="center">
+															 100-Day Simple Moving Average is Trending Higher 
+														</td>
+														<td bgcolor="white" valign="center">
+															 100SMA Trend > 0 
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white" align="center" valign="center">
+															 Long-Term Up Trend 
+														</td>
+														<td bgcolor="white" valign="center">
+															 200-Day Simple Moving Average is Trending Higher 
+														</td>
+														<td bgcolor="white" valign="center">
+															 200SMA Trend > 0 
+														</td>
+													</tr>
+												</table>
+											</td>
+									</table>
+									<table width="800" cellpadding="1" cellspacing="1">
+										<tr>
+											<td align="center" bgcolor="#161e5f" valign="top" width="50%" height="100%">
+												<font face="Helvetica" color="white" size="2"><b>FORECAST STATISTICS  <a href="how_it_works.php" target="_blank">(?)</a></b></font>
+												<table width="100%" cellpadding="5" height="100%">
+													<tr>
+														<td bgcolor="#2392e4" align="left">
+															<font color="white" face="Helvetica" size="2"><b>TIMEFRAME</b></font>
+														</td>
+														<td bgcolor="#2392e4">
+															<font color="white" face="Helvetica" size="2"><b>2-DAY</b></font>
+														</td>
+														<td bgcolor="#2392e4">
+															<font color="white" face="Helvetica" size="2"><b>5-DAY</b></font>
+														</td>
+														<td bgcolor="#2392e4">
+															<font color="white" face="Helvetica" size="2"><b>10-DAY</b></font>
+														</td>
+														<td bgcolor="#2392e4">
+															<font color="white" face="Helvetica" size="2"><b>20-DAY</b></font>
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white">
+															 <b>Average</b>
+														</td>
+														<td bgcolor="white">
+															 
+																<font color='red'>-0.87%</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font color='red'>-0.32%</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font  color="green">+0.94%</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font  color="green">+1.41%</font>
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white">
+															 <b>Max</b>
+														</td>
+														<td bgcolor="white">
+															 
+																<font  color="green">+1.48%</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font  color="green">+3.23%</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font  color="green">+3.99%</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font  color="green">+6.05%</font>
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white">
+															 <b>Min</b>
+														</td>
+														<td bgcolor="white">
+															 
+																<font color='red'>-4.23%</font>
+															</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font color='red'>-2.96%</font>
+															</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font color='red'>-6.08%</font>
+															</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font color='red'>-5.09%</font>
+															</font>
+														</td>
+													</tr>
+													<tr>
+														<td bgcolor="white">
+															 <b>% Positive</b></font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font color=''>42%</font>
+															</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font color='red'>33%</font>
+															</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font  color="green">67%</font>
+															</font>
+														</td>
+														<td bgcolor="white">
+															 
+																<font  color="green">67%</font>
+															</font>
+														</td>
+													</tr>
+										</tr>
+										<tr>
+											<td bgcolor="white">
+												 <b>Outlook</b></font>
+											</td>
+											<td bgcolor="black">
+												<font size="2" color=white>NEUTRAL</font>
+											</td>
+											<td bgcolor="red">
+												<font size="2" color=white>BEARISH</font>
+											</td>
+											<td bgcolor="green">
+												<font size="2" color=white>BULLISH</font>
+											</td>
+											<td bgcolor="green">
+												<font size="2" color=white>BULLISH</font>
+											</td>
+										</tr>
+										</table>
+										</td>
+										<td align="center" bgcolor="#161e5f" valign="top" width="50%">
+											<font face="Helvetica" color="white" size="2">HISTORICAL MATCHES <a href="how_it_works.php" target="_blank">(?)</a></font>
+											<table width="100%" cellpadding="5" height="100%">
+												<tr>
+													<td bgcolor="#2392e4" valign="center">
+														<font color="white" face="Helvetica" size="2"><b>MATCH DATE</b></font>
+													</td>
+													<td bgcolor="#2392e4">
+														<font color="white" face="Helvetica" size="2"><b>2-DAY</b></font>
+													</td>
+													<td bgcolor="#2392e4">
+														<font color="white" face="Helvetica" size="2"><b>5-DAY</b></font>
+													</td>
+													<td bgcolor="#2392e4">
+														<font color="white" face="Helvetica" size="2"><b>10-DAY</b></font>
+													</td>
+													<td bgcolor="#2392e4">
+														<font color="white" face="Helvetica" size="2"><b>20-DAY</b></font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom0">2017-02-01 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 0%</font>
+													</td>
+													<td bgcolor="white">
+														 0%</font>
+													</td>
+													<td bgcolor="white">
+														 0%</font>
+													</td>
+													<td bgcolor="white">
+														 0%</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom1">2016-11-23 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+1.32%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-1.88%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+1.37%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+5.70%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom2">2016-02-03 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-4.23%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-2.16%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+1.53%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+4.77%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom3">2016-02-02 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-2.15%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-2.96%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+1.93%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+4.52%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom4">2015-05-08 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+0.45%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+2.61%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+3.57%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+0.48%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom5">2015-01-29 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-1.97%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-0.05%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-0.14%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-4.09%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom6">2015-01-28 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-3.01%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-0.74%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-0.99%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-5.09%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom7">2015-01-27 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+0.16%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-1.18%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+0.05%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-4.59%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom8">2014-07-16 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-0.68%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+0.65%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-0.40%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font  color="green">+2.67%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <a href="#main" id="zoom9">2013-05-20 <img src="images/zoom.png"></a></font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-1.43%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-2.02%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-6.08%</font>
+														</font>
+													</td>
+													<td bgcolor="white">
+														 
+															<font color='red'>-3.36%</font>
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td bgcolor="white" valign="center">
+														 <b># Matches</b></font>
+													</td>
+													<td bgcolor="white" valign="center">
+														 12</font>
+													</td>
+													<td bgcolor="white" valign="center">
+														 <a href='view.php?symbol=CAG&page=1'>Next</a></font>
+													</td>
+													<td bgcolor="white" valign="center">
+														 </font>
+													</td>
+													<td bgcolor="white"></td>
+												</tr>
+											</table>
+										</td>
+										</tr>
+									</table>
+					</td>
+				</tr>
+			</table>
+			<p>&nbsp;
+				<hr size="1" color="#dddddd" width=761>
+				<center>
+					<font color="gray" face="Helvetica" size="1"><a href="http://www.wingcharts.com" class="headerlink">WINGCHARTS.COM</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="how_it_works.php"
+										class="headerlink">HOW IT WORKS</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="trade_signals_all.php" class="headerlink">TRADE SIGNALS</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+											href="screener.php" class="headerlink">SCREENER</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="my_portfolio.php" class="headerlink">MY PORTFOLIO</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+											class="headerlink" href="help.php">HELP</a></font>
+					<p>&nbsp;<br>
+						<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+						<div id="fb-root"></div>
+						<script>
+							(function (d, s, id) {
+								var js, fjs = d.getElementsByTagName(s)[0];
+								if (d.getElementById(id)) return;
+								js = d.createElement(s);
+								js.id = id;
+								js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+								fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));
+						</script>
+						<p>
+							<table>
+								<tr>
+									<td align="center" valign=top>
+										<div class="fb-follow" data-href="https://www.facebook.com/WingCharts" data-layout="button" data-size="small" data-show-faces="true"></div>
+										<br>
+										<a href="https://twitter.com/WingCharts" class="twitter-follow-button" data-show-count="false">Follow @WingCharts</a>
+										<br>
+										<a href="http://stocktwits.com/StockTwits" id="stocktwits-follow-button"><img src="http://stocktwits.com/assets/badges/FOLLOW_US_RED.png" height=80 alt="Follow Us on StockTwits" /></a>
+									</td>
+								</tr>
+							</table>
+							<font size="1" color="gray">powered by</font> <br>
+							<a href="http://www.wingcapital.net" target="_blank"><img src="images/wingcapital small.png"></a>
+							<p>
+								<font size="1" color="gray">Copyright &copy; 2017 WingCapital Co., Ltd. All Rights Reserved.
+									<p>
+										<p>Disclaimer: Past results are not necessarily indicative of future performance. This website is for educational
+											purposes only. No content published in this website, services and products constitutes a recommendation that any
+											particular investment, security, portfolio of securities, transaction or investment strategy is suitable for any
+											specific person. Practical use of the content, forecasts, charts and services provided in this website are at
+											your own risk and WingCapital Co., Ltd., WingCharts.com, its partners, representatives and employees assume no
+											responsibility or liability for any use of the website. Please contact your financial advisor for specific financial
+											advice tailored to your personal circumstances. Trade signals shown are hypothetical and do not represent actual
+											trades. Actual results may differ. Views, forecasts and commentaries expressed in this website are WingCapital
+											Co., Ltd.'s own opinions, and are not guarantees of future performance, and are subject to change over time.
+											<p>
+												WingCharts.com and WingCapital Co., Ltd. are not registered investment advisor or a broker dealer and do not give individualized
+												market advice. The information on this website is for illustration purposes only and should not be considered
+												as a solicitation of an offer on the purchase or sale of any securities. Trading in the securities markets involves
+												substantial risk and should not be undertaken without due diligence and serious independent study. WingCapital
+												Co., Ltd. recommends consulting a licensed professional broker regarding your personal investments. Without limitation,
+												WingCapital Co., Ltd. shall not be responsible or liable for any loss or damages related to, either directly
+												or indirectly, (1) any decline in market value or loss of any investment; (2) a subscribers inability to use
+												or any delay in accessing the WingCharts.com website or any other source of material provided by WingCharts.com
+												and WingCapital Co., Ltd.; (3) any absence or error of material on WingCharts.com website or presentation; (4)
+												WingCapital Co., Ltd. failure to deliver or delay in delivering any material or (5) any kind of error in transmission
+												of material.
+												<p>
+													ALL INFORMATION AND MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
+													WITHOUT LIMITATION ANY WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+								</font>
+</body>
+</html>
+    
+    
+    <script src="scripts/main.js"></script>
