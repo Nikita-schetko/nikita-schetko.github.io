@@ -2,7 +2,7 @@
 <html lang="">
 
 <head>
-  <title>WingCharts - ConAgra Foods Inc. (CAG) - QuantForecast</title>
+  <title>WingCharts - ETFs</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="WingCharts is a quantitative technical analysis framework with daily forecasts on US Stocks, Indices, ETFs, Futures and Forex using pattern recognition.">
@@ -375,177 +375,286 @@
       </div>
     </div>
 	<script src="./js/modalwindowScript.js"></script>
-    <br><b>ConAgra Foods Inc.</b> (CAG)<br>Equity - <a href="http://www.wingcharts.com/?sector=Consumer Staples">Consumer Staples</a>    - Packaged Foods & Meats
-    <d>&nbsp;
-      <table cellpadding="1" cellspacing="1" class="container-table">
-        <tr>
-          <td>
-            <font size="1">As of 2017-02-02</font>
-          </td>
-          <td align="right">
-            <a valign="center">
-              <img src="images/image004.png" width="16" height="16" >
-              <font size="1"><a href="add_alert.php?symbol=CAG">Add to My Portfolio</a></font>
-          </td>
-        </tr>
-      </table>
-      <table cellpadding="1" cellspacing="1" border="1" class="container-table" bordercolor="#161e5f">
-        <tr>
-          <td>
-          <div class="btn-group btn-group-justified btn-charts-group" role="group" aria-label="Justified button group">
-            <a class="btn selected" href="#">CHART & QUANTFORECAST</a>
-            <a class="btn " href="indicators.php?symbol=CAG">INDICATORS DASHBOARD</a>
-            <a class="btn " href="trade_signals.php?symbol=CAG">TRADE SIGNALS</a>
-          </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="row no-margin">
-              <div class="col-xs-12 col-md-6">
-                  <table class="table table-striped table-condensed  table-data-small">
-                  <tbody>
-                  <tr><td>Last</td><td>39.14</td><td>Open</td><td>39.14</td></tr>
-                  <tr><td>Prev Close</td><td>38.94</td><td>Chg</td><td>+0.20 ( +0.51%)</td></tr>
-                  <tr><td>Dividend Yield</td><td>2.05%</td><td>Curr P/E</td><td>27.46</td></tr>
-                  <tr><td>2017 EPS Est</td><td>1.69</td><td>1Yr Fwd P/E</td><td>23.04</td></tr>
-                  </tbody></table>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                  <table class="table table-condensed table-striped table-data-small">
-                  <tbody>
-                  <tr><td>High</td><td>39.15</td><td>Volume</td><td>22,662</td></tr>
-                  <tr><td>Low</td><td>39.02</td><td>52-Week High/Low</td><td>39.65 / 29.81</td></tr>
-                  <tr><td>P/B</td><td>3,83</td><td>Short Ratio</td><td>1.44</td></tr>
-                  <tr><td>P/S</td><td>1.52</td><td>PEG Ratio</td><td>1.79</td></tr>
-                  </tbody></table>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-
-            <div class="menu-nav chart-editor" role="tablist">
-              <div class="text-center">
-                  <div class="wrapper-nowrap">
-                    <div role="presentation" class="dropdown">
-                      <button class="menu-btn dropdown-toggle" id="main" type="button" data-toggle="dropdown">Price Chart Type</button>
-                      <ul class="dropdown-menu" role="menu" aria-labelledby="main">
-                        <li class="dropdown-menuitem" id="candlestick" role="presentation"><a role="menuitem">Candlestick</a></li>
-                        <li class="dropdown-menuitem" id="line" role="presentation"><a role="menuitem">Line</a></li>
-                      </ul>
-                    </div>
-                    <div role="presentation" class="dropdown">
-                      <button class="menu-btn dropdown-toggle" id="overlays-indicators" type="button" data-toggle="dropdown">Overlays / Indicators</button>
-                      <ul class="dropdown-menu" role="menu" aria-labelledby="overlays-indicators">
-                        <li class="dropdown-header"><b>Simple Moving Average</b></li>
-                        <!-- <li class="dropdown-menuitem" id="sma20" role="presentation"><a role="menuitem">20SMA</a></li> -->
-                        <li class="dropdown-menuitem" id="sma50" role="presentation"><a role="menuitem">50SMA</a></li>
-                        <!-- <li class="dropdown-menuitem" id="sma100" role="presentation"><a role="menuitem">100SMA</a></li> -->
-                        <li class="dropdown-menuitem" id="sma200" role="presentation"><a role="menuitem">200SMA</a></li>
-                        <!-- <li class="dropdown-header"><b>Exp. Moving Average</b></li>
-                                                            <li class="dropdown-menuitem" id="ema9" role="presentation"><a role="menuitem">9EMA</a></li>
-                                                            <li class="dropdown-menuitem" id="ema12" role="presentation"><a role="menuitem">12EMA</a></li>
-                                                            <li class="dropdown-menuitem" id="ema26" role="presentation"><a role="menuitem">26EMA</a></li> -->
-                        <li class="dropdown-header"><b>Bollinger Band</b></li>
-                        <li class="dropdown-menuitem" id="bb20" role="presentation"><a role="menuitem">20-Day Boll Band</a></li>
-                        <!--<li class="dropdown-header"><b>Volatility</b></li>
-                                                            <li class="dropdown-menuitem" id="vol20" role="presentation"><a role="menuitem">20-Day Vol</a></li>
-                                                            <li class="dropdown-menuitem" id="vol50" role="presentation"><a role="menuitem">50-Day Vol</a></li>
-                                                            <li class="dropdown-menuitem" id="vol100" role="presentation"><a role="menuitem">100-Day Vol</a></li>
-                                                            <li class="dropdown-menuitem" id="vol200" role="presentation"><a role="menuitem">200-Day Vol</a></li> -->
-                        <li class="dropdown-header"><b>Momentum Indicators</b></li>
-                        <li class="dropdown-menuitem" id="macd" role="presentation"><a role="menuitem">MACD</a></li>
-                        <li class="dropdown-menuitem" id="rsi" role="presentation"><a role="menuitem">RSI</a></li>
-                        <li class="dropdown-menuitem" id="stoch" role="presentation"><a role="menuitem">Stochastic</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                <div class="checkbox">
-                  <label>
-                      <input id="forecast" type="checkbox" checked> Avg QuantForecast 
-                    </label>
-                  <label>
-                      <input id="forecastmin" type="checkbox" checked> Best 
-                    </label>
-                  <label>
-                      <input id="forecastmax" type="checkbox" checked> Worst 
-                    </label>
-                </div>
-                <!--<div class="fb-like" data-href="http://www.facebook.com/WingCharts" data-layout="button_count" data-action="like" data-size="small"
-                  data-show-faces="true" data-share="false">
-                </div>-->
-              </div>
-            </div>
-            <div id="chart1" style="min-width: 310px; max-width: 800px;  margin: 0 auto"></div>
-            <center>
-              <font size="1">
-                <img valign="center" src="images/image010.png"><a href="#main" onclick="document.getElementById('myModal').style.display='block'">Customize QuantForecast</a>                &nbsp;&nbsp;
-                <a href="save_forecast.php?id=05d8632563"><img valign="center" src="images/saveforecast.png"> Save To My Forecasts</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#" onclick="document.getElementById('shareLink').style.display='block'"> <img valign="center" src="images/image008.png">Share</a>
-              </font>
-              <p>
-                <p>
-                  <center>
-                    <font color="#161e5f" size=4>Latest QuantForecast</font>
-                  </center>
-                  As Of 2017-02-01 <br>
-
-
-                  </td>
-        </tr>
-        						<tr>
-											<td align="center" bgcolor="#161e5f" valign="top" width="50%">
-												<font face="Helvetica" color="white" size="2">ROBOCOMMENTARY</font>
-											</td>
-										</tr>
-                    <tr>
-                      <td class="standrat-td">
-                        Long-term uptrend while near-term is mixed . Momentum is deteriorating with . That being said, Forecast points to higher
-                        price but with choppy action </td>                     
-                    </tr>
-										<tr>
-											<td align="center" bgcolor="#161e5f" valign="top" width="50%">
-												<font face="Helvetica" color="white" size="2">TECHNICAL PATTERN <a href="patterns_indicators.php" target="_blank">(?)</a></font>
-											</td>
-										</tr>
-                    <tr>
-                      <td class="inlined-td">
-                        <table class="table table-striped table-condensed table-pattern ">
-                        <thead><tr class="tableizer-firstrow"><th>TYPE</th><th>DESCRIPTION</th><th>CRITERIA (?)</th></tr></thead><tbody>
-                        <tr><td>Negative Divergence</td><td>Price is Moving Higher while Fast Stochastics is crossing Negatively</td><td>Fast Stochastics K Line < Slow Stochastics K Line And 9EMA above the 20DMA</td></tr>
-                        <tr><td>Short-Term Up Trend</td><td>9-Day Exponential Moving Average is Trending Higher</td><td>9EMA Trend > 0</td></tr>
-                        <tr><td>Short-Term Down Trend</td><td>20-Day Simple Moving Average is Trending Lower</td><td>20SMA Trend < 0</td></tr>
-                        <tr><td>Medium-Term Up Trend</td><td>50-Day Simple Moving Average is Trending Higher</td><td>50SMA Trend > 0</td></tr>
-                        <tr><td>Long-Term Up Trend</td><td>100-Day Simple Moving Average is Trending Higher</td><td>100SMA Trend > 0</td></tr>
-                        <tr><td>Long-Term Up Trend</td><td>200-Day Simple Moving Average is Trending Higher</td><td>200SMA Trend > 0</td></tr>
-                        </tbody></table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                      <div class="row no-margin" style="background-color: #161e5f">
-                        <div class="col-sm-12 col-md-6 border-right-visible-md">
- <table cellpadding="5" height="100%" width="100%">
+        <center>
+            <font size="2"><b>Category:</b>  <a href="#us">U.S. ETFs</a> | <a href="#commod">Commodities/Vol/Bond/Currencies ETFs</a> | <a href="#country">Emerging Markets/Country ETFs</a></font>
+<table class="container-table etf-table" cellpadding="5" cellspacing="1">
+<tbody>
+		<tr>
+			<td colspan="10" bgcolor="#161e5f" class="text-center">
+				<font face="Helvetica" color="white" size="2"><b>U.S. ETFs</b></font><a id="us"> </a>
+			</td>
+		</tr>
+    <tr>
+      <td bgcolor="#2392E4" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>SYMBOL / NAME</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center" align="right">
+        <font color="white" face="Helvetica" size="2"><strong>CLOSE / VOLUME</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>CHG</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>WTD</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>MTD</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>YTD</strong></font>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="2">
+        <a class="etf-symbol" href="https://www.wingcharts.com/?symbol=SPY" target="_blank"><font size="2">SPY</font></a>
+				<span class="etf-name">SPDR S&amp;P 500</span>
+      </td>
+      <td align="right">
+        <font size="2">229.35</font>
+				<font size="2">65,199,361</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+1.58</font>
+        (<font color="green">+0.69%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+0.36</font>
+        (<font color="green">+0.16%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+1.84</font>
+        (<font color="green">+0.81%</font>)</font>
+      </td>
+      <td>
+        <font size="2"><font color="green">+5.82</font>
+        (<font color="green">+2.60%</font>)</font>
+      </td>
+    </tr>
+		<tr class="qf-row">
+			<td colspan="5">
+						<div class="qf-items">
+							<span class="qf-item"><i>2d</i><img src="images/bullisharrow.jpg"></span>
+							<span class="qf-item"><i>5d</i><img src="images/bullisharrow.jpg"></span>
+							<span class="qf-item"><i>10d</i><img src="images/neutralarrow.jpg"></span>
+							<span class="qf-item"><i>20d</i><img src="images/neutralarrow.jpg"></span>
+						</div>
+			</td>
+		</tr>
+    <tr>
+      <td rowspan="2">
+        <a class="etf-symbol" href="https://www.wingcharts.com/?symbol=DIA" target="_blank"><font size="2">DIA</font></a>
+        <span class="etf-name">Dow Jones Industrial Average ETF</span>
+      </td>
+      <td   align="right">
+        <font size="2">200.39</font>
+				<font size="2">4,778,286</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+1.78</font>
+        (<font color="green">+0.90%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="red">-0.24</font> (<font color="red">-0.12%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+2.04</font>
+        (<font color="green">+1.03%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+3.07</font>
+        (<font color="green">+1.56%</font>)</font>
+      </td>
+    </tr>
+		<tr class="qf-row">
+			<td colspan="5">
+						<div class="qf-items">
+							<span class="qf-item"><i>2d</i><img src="images/neutralarrow.jpg"></span>
+							<span class="qf-item"><i>5d</i><img src="images/bullisharrow.jpg"></span>
+							<span class="qf-item"><i>10d</i><img src="images/neutralarrow.jpg"></span>
+							<span class="qf-item"><i>20d</i><img src="images/neutralarrow.jpg"></span>
+						</div>
+			</td>
+		</tr>
    <tr>
-     <th class="blue-header" colspan="5">FORECAST STATISTICS </th>
-   </tr>
-<tr> <td bgcolor="#2392E4" align="left"> <font color="white" size="2" face="Helvetica"><strong>TIMEFRAME</strong></font> </td><td bgcolor="#2392E4"> <font color="white" size="2" face="Helvetica"><strong>2-DAY</strong></font> </td><td bgcolor="#2392E4"> <font color="white" size="2" face="Helvetica"><strong>5-DAY</strong></font> </td><td bgcolor="#2392E4"> <font color="white" size="2" face="Helvetica"><strong>10-DAY</strong></font> </td><td bgcolor="#2392E4"> <font color="white" size="2" face="Helvetica"><strong>20-DAY</strong></font> </td></tr><tr> <td bgcolor="white"> <strong>Average</strong> </td><td bgcolor="white"> <font color="red">-0.87%</font> </td><td bgcolor="white"> <font color="red">-0.32%</font> </td><td bgcolor="white"> <font color="green">+0.94%</font> </td><td bgcolor="white"> <font color="green">+1.41%</font> </td></tr><tr> <td bgcolor="white"> <strong>Max</strong> </td><td bgcolor="white"> <font color="green">+1.48%</font> </td><td bgcolor="white"> <font color="green">+3.23%</font> </td><td bgcolor="white"> <font color="green">+3.99%</font> </td><td bgcolor="white"> <font color="green">+6.05%</font> </td></tr><tr> <td bgcolor="white"> <strong>Min</strong> </td><td bgcolor="white"> <font color="red">-4.23%</font> </td><td bgcolor="white"> <font color="red">-2.96%</font> </td><td bgcolor="white"> <font color="red">-6.08%</font> </td><td bgcolor="white"> <font color="red">-5.09%</font> </td></tr><tr> <td bgcolor="white"> <strong>% Positive</strong> </td><td bgcolor="white"> <font color="">42%</font> </td><td bgcolor="white"> <font color="red">33%</font> </td><td bgcolor="white"> <font color="green">67%</font> </td><td bgcolor="white"> <font color="green">67%</font> </td></tr><tr> <td bgcolor="white"> <strong>Outlook</strong> </td><td bgcolor="black"> <font color="white" size="2">NEUTRAL</font> </td><td bgcolor="red"> <font color="white" size="2">BEARISH</font> </td><td bgcolor="green"> <font color="white" size="2">BULLISH</font> </td><td bgcolor="green"> <font color="white" size="2">BULLISH</font> </td></tr></table>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
- <table width="100%" cellpadding="5" height="100%"><thead>
+      <td rowspan="2">
+        <a class="etf-symbol" href="https://www.wingcharts.com/?symbol=QQQ" target="_blank"><font size="2">QQQ</font></a>
+        <span class="etf-name">PowerShares QQQ Trust</span>
+      </td>
+      <td   align="right">
+        <font size="2">125.66</font>
+				<font size="2">6,662,347</font>
+      </td>
+      <td  >
+        <font size="2"><font color="red">	-0.02</font>
+        (<font color="red">-0.02%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+0.34</font>
+         (<font color="green">+0.27%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+1.09</font>
+        (<font color="green">+0.87%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+7.18</font>
+        (<font color="green">+6.06%</font>)</font>
+      </td>
+    </tr>
+		<tr class="qf-row">
+			<td colspan="5">
+						<div class="qf-items">
+							<span class="qf-item"><i>2d</i><img src="images/neutralarrow.jpg"></span>
+							<span class="qf-item"><i>5d</i><img src="images/bullisharrow.jpg"></span>
+							<span class="qf-item"><i>10d</i><img src="images/bullisharrow.jpg"></span>
+							<span class="qf-item"><i>20d</i><img src="images/bullisharrow.jpg"></span>
+						</div>
+			</td>
+		</tr>
+</tbody>
+</table>
+<hr>
+<table class="container-table etf-table" cellpadding="5" cellspacing="1">
+<tbody>
+		<tr>
+			<td colspan="10" bgcolor="#161e5f" class="text-center">
+				<font face="Helvetica" color="white" size="2"><b>Commodities/Vol/Bond/Currencies ETFs</b></font><a id="commod"> </a>
+			</td>
+		</tr>
+    <tr>
+      <td bgcolor="#2392E4" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>SYMBOL / NAME</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center" align="right">
+        <font color="white" face="Helvetica" size="2"><strong>CLOSE / VOLUME</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>CHG</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>WTD</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>MTD</strong></font>
+      </td>
+      <td bgcolor="#2392E4" width="50" valign="center">
+        <font color="white" face="Helvetica" size="2"><strong>YTD</strong></font>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="2">
+        <a class="etf-symbol" href="https://www.wingcharts.com/?symbol=GLD" target="_blank"><font size="2">GLD</font></a>
+				<span class="etf-name">SPDR Gold Trust</span>
+      </td>
+      <td align="right">
+        <font size="2">229.35</font>
+				<font size="2">65,199,361</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+1.58</font>
+        (<font color="green">+0.69%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+0.36</font>
+        (<font color="green">+0.16%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+1.84</font>
+        (<font color="green">+0.81%</font>)</font>
+      </td>
+      <td>
+        <font size="2"><font color="green">+5.82</font>
+        (<font color="green">+2.60%</font>)</font>
+      </td>
+    </tr>
+		<tr class="qf-row">
+			<td colspan="5">
+						<div class="qf-items">
+              <span class="qf-legend">QF<a href="how_it_works.php" target="_blank"><font color="#161e5f">(?)</font></a> :</span>
+							<span class="qf-item"><i>2d</i><img src="images/bullisharrow.jpg"></span>
+							<span class="qf-item"><i>5d</i><img src="images/bullisharrow.jpg"></span>
+							<span class="qf-item"><i>10d</i><img src="images/neutralarrow.jpg"></span>
+							<span class="qf-item"><i>20d</i><img src="images/neutralarrow.jpg"></span>
+						</div>
+			</td>
+		</tr>
+    <tr>
+      <td rowspan="2">
+        <a class="etf-symbol" href="https://www.wingcharts.com/?symbol=SLV" target="_blank"><font size="2">SLV</font></a>
+        <span class="etf-name">iShares Silver Trust</span>
+      </td>
+      <td   align="right">
+        <font size="2">200.39</font>
+				<font size="2">4,778,286</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+1.78</font>
+        (<font color="green">+0.90%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="red">-0.24</font> (<font color="red">-0.12%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+2.04</font>
+        (<font color="green">+1.03%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+3.07</font>
+        (<font color="green">+1.56%</font>)</font>
+      </td>
+    </tr>
+		<tr class="qf-row">
+			<td colspan="5">
+						<div class="qf-items">
+              <span class="qf-legend">QF<a href="how_it_works.php" target="_blank"><font color="#161e5f">(?)</font></a> :</span>
+							<span class="qf-item"><i>2d</i><img src="images/neutralarrow.jpg"></span>
+							<span class="qf-item"><i>5d</i><img src="images/bullisharrow.jpg"></span>
+							<span class="qf-item"><i>10d</i><img src="images/neutralarrow.jpg"></span>
+							<span class="qf-item"><i>20d</i><img src="images/neutralarrow.jpg"></span>
+						</div>
+			</td>
+		</tr>
    <tr>
-     <th class="blue-header" colspan="5">HISTORICAL MATCHES </th>
-   </tr>
- </thead> <tbody> <tr> <td bgcolor="#2392E4" valign="center"> <font color="white" face="Helvetica" size="2"><strong>MATCH DATE</strong></font> </td><td bgcolor="#2392E4"> <font color="white" face="Helvetica" size="2"><strong>2-DAY</strong></font> </td><td bgcolor="#2392E4"> <font color="white" face="Helvetica" size="2"><strong>5-DAY</strong></font> </td><td bgcolor="#2392E4"> <font color="white" face="Helvetica" size="2"><strong>10-DAY</strong></font> </td><td bgcolor="#2392E4"> <font color="white" face="Helvetica" size="2"><strong>20-DAY</strong></font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom0">2017-02-01 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> 0% </td><td bgcolor="white"> 0% </td><td bgcolor="white"> 0% </td><td bgcolor="white"> 0% </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom1">2016-11-23 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="green">+1.32%</font> </td><td bgcolor="white"> <font color="red">-1.88%</font> </td><td bgcolor="white"> <font color="green">+1.37%</font> </td><td bgcolor="white"> <font color="green">+5.70%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom2">2016-02-03 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="red">-4.23%</font> </td><td bgcolor="white"> <font color="red">-2.16%</font> </td><td bgcolor="white"> <font color="green">+1.53%</font> </td><td bgcolor="white"> <font color="green">+4.77%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom3">2016-02-02 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="red">-2.15%</font> </td><td bgcolor="white"> <font color="red">-2.96%</font> </td><td bgcolor="white"> <font color="green">+1.93%</font> </td><td bgcolor="white"> <font color="green">+4.52%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom4">2015-05-08 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="green">+0.45%</font> </td><td bgcolor="white"> <font color="green">+2.61%</font> </td><td bgcolor="white"> <font color="green">+3.57%</font> </td><td bgcolor="white"> <font color="green">+0.48%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom5">2015-01-29 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="red">-1.97%</font> </td><td bgcolor="white"> <font color="red">-0.05%</font> </td><td bgcolor="white"> <font color="red">-0.14%</font> </td><td bgcolor="white"> <font color="red">-4.09%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom6">2015-01-28 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="red">-3.01%</font> </td><td bgcolor="white"> <font color="red">-0.74%</font> </td><td bgcolor="white"> <font color="red">-0.99%</font> </td><td bgcolor="white"> <font color="red">-5.09%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom7">2015-01-27 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="green">+0.16%</font> </td><td bgcolor="white"> <font color="red">-1.18%</font> </td><td bgcolor="white"> <font color="green">+0.05%</font> </td><td bgcolor="white"> <font color="red">-4.59%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom8">2014-07-16 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="red">-0.68%</font> </td><td bgcolor="white"> <font color="green">+0.65%</font> </td><td bgcolor="white"> <font color="red">-0.40%</font> </td><td bgcolor="white"> <font color="green">+2.67%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <a href="#main" id="zoom9">2013-05-20 <img src="images/zoom.png"/></a> </td><td bgcolor="white"> <font color="red">-1.43%</font> </td><td bgcolor="white"> <font color="red">-2.02%</font> </td><td bgcolor="white"> <font color="red">-6.08%</font> </td><td bgcolor="white"> <font color="red">-3.36%</font> </td></tr><tr> <td bgcolor="white" valign="center"> <strong># Matches</strong> </td><td bgcolor="white" valign="center"> 12 </td><td bgcolor="white" valign="center"> <a href="view.php?symbol=CAG&amp;page=1">Next</a> </td><td bgcolor="white" valign="center"></td><td bgcolor="white"></td></tr></tbody></table>                         
-                        </div>                        
-                      </div>
-                      </td>
-                    </tr>
-      </table>
-      <p>&nbsp;
-        <hr size="1" color="#dddddd" >
+      <td rowspan="2">
+        <a class="etf-symbol" href="https://www.wingcharts.com/?symbol=USO" target="_blank"><font size="2">USO</font></a>
+        <span class="etf-name">United States Oil Fund</span>
+      </td>
+      <td   align="right">
+        <font size="2">125.66</font>
+				<font size="2">6,662,347</font>
+      </td>
+      <td  >
+        <font size="2"><font color="red">	-0.02</font>
+        (<font color="red">-0.02%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+0.34</font>
+         (<font color="green">+0.27%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="red">-1.09</font>
+        (<font color="red">-0.87%</font>)</font>
+      </td>
+      <td  >
+        <font size="2"><font color="green">+7.18</font>
+        (<font color="green">+6.06%</font>)</font>
+      </td>
+    </tr>
+		<tr class="qf-row">
+			<td colspan="5">
+						<div class="qf-items">
+              <span class="qf-legend">QF<a href="how_it_works.php" target="_blank"><font color="#161e5f">(?)</font></a> :</span>
+							<span class="qf-item"><i>2d</i><img src="images/neutralarrow.jpg"></span>
+							<span class="qf-item"><i>5d</i><img src="images/bearisharrow.jpg"></span>
+							<span class="qf-item"><i>10d</i><img src="images/bearisharrow.jpg"></span>
+							<span class="qf-item"><i>20d</i><img src="images/neutralarrow.jpg"></span>
+						</div>
+			</td>
+		</tr>
+</tbody>
+</table>
+        </center>
+         <hr size="1" color="#dddddd" >
         <center>
           <font color="gray" face="Helvetica" size="1"><a href="http://www.wingcharts.com" class="headerlink">WINGCHARTS.COM</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="how_it_works.php" class="headerlink">HOW IT WORKS</a>&nbsp;&nbsp;&nbsp;&nbsp;
