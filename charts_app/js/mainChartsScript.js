@@ -90,11 +90,9 @@
 				itemMarginBottom: 2,
 				useHTML: true,
 				labelFormatter: function() {
-					console.log(this);
-					// if (this.options.patternName == 'Medium-Term Up Trend') return '<h2>Title Group 1</h2>' + this.name;
-					if(this.options.patternName)
+					if(this.options.tooltipName)
 					{
-						return '<span class="haspattern">' + this.name +'</span>';
+						return '<span class="hastooltip">' + this.name +'</span>';
 					}
 					return '<span class="abcd" >' + this.name + '</span>';
 				}
@@ -299,8 +297,8 @@
 			color: '#7cb5ec',
 			dashStyle: 'dash',
 			showInLegend: true,
-			patternName: 'Short-Term Up Trend',
-			patternDescription: '9-Day Exponential Moving Average is Trending Higher',
+			tooltipName: 'Short-Term Up Trend',
+			tooltipDescription: '9-Day Exponential Moving Average is Trending Higher',
 			dataGrouping: {
 				units: groupingUnits
 			},
@@ -313,8 +311,8 @@
 			dashStyle: 'dash',
 			lineWidth: 1,
 			showInLegend: true,
-			patternName: 'Short-Term Up Trend',
-			patternDescription: '9-Day Exponential Moving Average is Trending Higher',
+			tooltipName: 'Short-Term Up Trend',
+			tooltipDescription: '9-Day Exponential Moving Average is Trending Higher',
 			dataGrouping: {
 				units: groupingUnits
 			},
@@ -327,8 +325,8 @@
 			dashStyle: 'dash',
 			lineWidth: 1,
 			showInLegend: true,
-			patternName: 'Short-Term Down Trend',
-			patternDescription: '20-Day Simple Moving Average is Trending Lower',
+			tooltipName: 'Short-Term Down Trend',
+			tooltipDescription: '20-Day Simple Moving Average is Trending Lower',
 			dataGrouping: {
 				units: groupingUnits
 			},
@@ -386,8 +384,8 @@
 			enableMouseTracking: false,
 			data: BB_low,
 			color: '#90ed7d',
-			patternName: 'Medium-Term Up Trend',
-			patternDescription: '50-Day Simple Moving Average is Trending Higher',
+			tooltipName: 'Medium-Term Up Trend',
+			tooltipDescription: '50-Day Simple Moving Average is Trending Higher',
 			dataGrouping: {
 				units: groupingUnits
 			},
@@ -1042,24 +1040,14 @@
 				
 				element.onmouseover = function () {
 					// Highlighting current spline on chart by adding stroke-width;
-					// item.legendGroup.element
-					console.log(item);
-					// console.log(item.legendGroup.element);
-					
 					globalitem = item;
 					
-
-					if (item.options.patternName && !($(item.legendGroup.div.firstChild).hasClass('tooltipLegendItem'))) {
+					if (item.options.tooltipName && !($(item.legendGroup.div.firstChild).hasClass('tooltipLegendItem'))) {
 					  $(item.legendGroup.div.firstChild).addClass('tooltipLegendItem');
 
 					  $(element).tooltip({
 					    content: function () {
-					      //                console.log(this);
-					      //   var t = parseInt($(this).get(0).attributes['data-index'].nodeValue) + 1;
-					      //                var x = $(this).get(0).attributes['data-index'];
-					      //   return refs['p' + t] + ' <a style="color: blue" href="#">hyperref</a>';
-					      return '<div><strong>' + item.options.patternName + '</strong></div><div>' + item.options.patternDescription + '</div>';
-
+					      return '<div><strong>' + item.options.tooltipName + '</strong></div><div>' + item.options.tooltipDescription + '</div>';
 					    },
 					    position: {
 					      my: 'left bottom',
@@ -1104,7 +1092,7 @@
 				
 				element.onmouseout = function () {
 					//NS: Close ToolTip on mouseout
-					if (item.options.patternName && $(item.legendGroup.div.firstChild).hasClass('tooltipLegendItem')) {
+					if (item.options.tooltipName && $(item.legendGroup.div.firstChild).hasClass('tooltipLegendItem')) {
 						$(element).tooltip('close');
 					}
 					
