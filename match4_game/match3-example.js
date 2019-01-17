@@ -1225,7 +1225,7 @@ window.onload = function () {
 
         // HARDCODED VARIANT;
         if (gameover && hardcoded) {
-            checkBanubaLogoPressed(pos);
+            checkBanubaLogoPressed(pos, e);
             checkGetButtonPressed(pos);
             return false;
         }
@@ -1267,11 +1267,12 @@ window.onload = function () {
         }
 
         // Check if a button was clicked
-        if (hardcoded) checkBanubaLogoPressed(pos)
+        if (hardcoded) checkBanubaLogoPressed(pos, e)
         if (!hardcoded) checkButtonsPressed(pos);
     }
 
-    function checkBanubaLogoPressed(pos) {
+    function checkBanubaLogoPressed(pos, e) {
+        console.log(e);
         if (pos.x >= logo.logoCoordinateX && pos.x < logo.logoCoordinateX + logo.width &&
             pos.y >= logo.logoCoordinateY && pos.y < logo.logoCoordinateY + logo.height) {
                 callToAction();
