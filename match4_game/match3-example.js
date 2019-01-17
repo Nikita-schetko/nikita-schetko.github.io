@@ -236,11 +236,11 @@ window.onload = function () {
     // Initialize the game
     function init() {
         // Add mouse events
-        canvas.addEventListener("mousemove", onMouseMove);
         canvas.addEventListener("touchmove", onMouseMove);
+        canvas.addEventListener("mousemove", onMouseMove);
 
-        canvas.addEventListener("mousedown", onMouseDown);
         canvas.addEventListener("touchstart", onMouseDown);
+        canvas.addEventListener("mousedown", onMouseDown);
 
         canvas.addEventListener("mouseup", onMouseUp);
         canvas.addEventListener("touchend", onMouseUp);
@@ -1219,6 +1219,8 @@ window.onload = function () {
 
     // On mouse button click
     function onMouseDown(e) {
+        if(e.type = 'touchend') e.preventDefault();
+
         totalTimeWithoutActions = 0;
         // Get the mouse position
         var pos = getMousePos(canvas, e);
