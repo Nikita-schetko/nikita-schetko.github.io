@@ -414,10 +414,11 @@ window.onload = function () {
         }
 
         // Show pointer hand
-        var maximumNoActionsTime = 7
+        var maximumNoActionsTime = 0
         if (totalTimeWithoutActions > maximumNoActionsTime && clusters.length <= 0 && gamestate == gamestates.ready && !gameover) {
-            var animationSpeed = 200;
-            var relativeTimePeriod = (totalTimeWithoutActions - maximumNoActionsTime) * 70 % animationSpeed;
+            var animationSpeed = 125;
+            var animationTimeFraction = 70;
+            var relativeTimePeriod = (totalTimeWithoutActions - maximumNoActionsTime) * animationTimeFraction % animationSpeed;
             var cursorTmpImg = document.createElement('img');
             cursorTmpImg.src = 'cursor.png';
             
@@ -849,10 +850,10 @@ window.onload = function () {
         // Keep generating levels until it is correct
         if (hardcoded) {
             level.tiles = convertArrayToLevel(
-                [[0, 1, 0, 1],
-                [0, 0, 1, 2],
-                [2, 1, 0, 2],
-                [0, 1, 0, 0]]
+                [[0, 2, 2, 3],
+                [3, 0, 1, 3],
+                [3, 1, 0, 2],
+                [1, 1, 0, 0]]
             )
             var done = true;
         } else {
@@ -942,7 +943,7 @@ window.onload = function () {
 
                 // Check if there was a cluster
                 if (checkcluster) {
-                    if (matchlength >= 4) {
+                    if (matchlength >= 3) {
                         // Found a horizontal cluster
                         clusters.push({
                             column: i + 1 - matchlength, row: j,
@@ -979,7 +980,7 @@ window.onload = function () {
 
                 // Check if there was a cluster
                 if (checkcluster) {
-                    if (matchlength >= 4) {
+                    if (matchlength >= 3) {
                         // Found a vertical cluster
                         clusters.push({
                             column: i, row: j + 1 - matchlength,
@@ -1084,18 +1085,18 @@ window.onload = function () {
             switch (move) {
                 case 0:
                     level.tiles = convertArrayToLevel(
-                        [[0, 3, 0, 1],
-                        [0, 3, 3, 2],
-                        [2, 2, 0, 2],
-                        [0, 0, 2, 0]]
+                        [[0, 1, 0, 3],
+                        [3, 2, 1, 3],
+                        [3, 0, 0, 2],
+                        [1, 2, 2, 0]]
                     )
                     break;
                 case 1:
                     level.tiles = convertArrayToLevel(
-                        [[3, 0, 1, 0],
-                        [0, 3, 0, 3],
-                        [0, 3, 0, 1],
-                        [0, 3, 3, 2]]
+                        [[0, 1, 3, 0],
+                        [3, 2, 1, 0],
+                        [3, 1, 0, 3],
+                        [1, 2, 1, 3]]
                     )
                     break;
                 case 2:
