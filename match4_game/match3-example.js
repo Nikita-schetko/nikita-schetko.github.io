@@ -689,7 +689,7 @@ window.onload = function () {
         var bignumCoordX = arrowsCoordX + scoreArrows.width + scoreNumberBig.horizontalShift;
         var bignumCoordY = scoreContainer.coordinateY + scoreContainer.height / 2 - scoreNumberBig.height / 2 + scoreContainer.innerShift;
         var tempBigNum = document.createElement('img');
-        tempBigNum.src = '_' + imageName + '.png';
+        tempBigNum.src = 'b' + imageName + '.png';
         context.drawImage(tempBigNum, bignumCoordX, bignumCoordY, scoreNumberBig.width, scoreNumberBig.height);
 
         // Face
