@@ -230,8 +230,14 @@ window.onload = function () {
     function init() {
         // Add mouse events
         canvas.addEventListener("mousemove", onMouseMove);
+        canvas.addEventListener("touchmove", onMouseMove);
+
         canvas.addEventListener("mousedown", onMouseDown);
+        canvas.addEventListener("touchstart", onMouseDown);
+
         canvas.addEventListener("mouseup", onMouseUp);
+        canvas.addEventListener("touchend", onMouseUp);
+
         canvas.addEventListener("mouseout", onMouseOut);
 
         // Initialize the two-dimensional tile array
@@ -1184,7 +1190,7 @@ window.onload = function () {
     // On mouse movement
     function onMouseMove(e) {
         // Get the mouse position
-        var pos = getMousePos(canvas, e);
+        var pos = getMousePos(canvas, e, true);
 
         // Check if we are dragging with a tile selected
         if (drag && level.selectedtile.selected) {
@@ -1291,12 +1297,22 @@ window.onload = function () {
     }
 
     // Get the mouse position
-    function getMousePos(canvas, e) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-            x: Math.round((e.clientX - rect.left) / (rect.right - rect.left) * canvas.width),
-            y: Math.round((e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height)
-        };
+    function getMousePos(canvas, e, log) {
+        if(e.touches) {
+            if(log) console.log(e)
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: Math.round((e.touches[0].clientX - rect.left) / (rect.right - rect.left) * canvas.width),
+                y: Math.round((e.touches[0].clientY - rect.top) / (rect.bottom - rect.top) * canvas.height)
+            };
+        }
+        else {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: Math.round((e.clientX - rect.left) / (rect.right - rect.left) * canvas.width),
+                y: Math.round((e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height)
+            };
+        }
     }
 
     function adjustSizesByRatio() {
