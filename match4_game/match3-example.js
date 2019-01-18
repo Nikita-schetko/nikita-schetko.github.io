@@ -1,3 +1,4 @@
+'use strict';
 window.onload = function () {
     // HARDCODED MODE //
     // ************* //
@@ -54,16 +55,12 @@ window.onload = function () {
         context.canvas.width = context.canvas.height * bg.width / bg.height;
         widthRatio = context.canvas.width / bg.width;
         heightRatio = context.canvas.height / bg.height;
-        console.log("level.y", level.y)
-        console.log("height-", document.documentElement.clientHeight / document.documentElement.clientWidth)
     } else {
         context.canvas.width = document.documentElement.clientWidth;
         // context.canvas.height = context.canvas.width * bg.height / bg.width;
         context.canvas.height = document.documentElement.clientHeight;
         widthRatio = context.canvas.width / bg.width;
         heightRatio = (context.canvas.width * bg.height / bg.width) / bg.height;
-        console.log("level.y", level.y)
-        console.log("height+", document.documentElement.clientHeight / document.documentElement.clientWidth)
         //level.y = level.y * heightRatio + ((context.canvas.height - bg.height * heightRatio) / 2)
     }
     level.y = context.canvas.height / 2 - (level.tileOriginalHeight * heightRatio) * 2 - playground.verticalShift * heightRatio
@@ -137,8 +134,8 @@ window.onload = function () {
     }
 
     var winImg = {
-        width: 706,
-        height: 685,
+        width: 600,
+        height: 582,
         verticalShift: 0,
         horizontalShift: -5,
         winImgCoordX: 0,
@@ -213,6 +210,8 @@ window.onload = function () {
     var animationtimetotal = 0.4;
     var totalTimeWithoutActions = 0;
     var opacityAnimationTime = 0;
+    var animationOpacityEnd;
+    var animationScaleEnd;
     var scaleAnimationTime = 0;
     // deltaFrame
     var dt;
@@ -224,7 +223,7 @@ window.onload = function () {
     var showmoves = false;
 
     // Game Over
-    gameover = false;
+    var gameover = false;
 
     // Gui buttons
     var buttons = [{ x: 30 * widthRatio, y: 1200 * heightRatio + 60, width: 150, height: 50, text: "New Game" },
@@ -411,7 +410,7 @@ window.onload = function () {
         }
 
         // Show pointer hand
-        var maximumNoActionsTime = 0;
+        var maximumNoActionsTime = 0.5;
         if (totalTimeWithoutActions > maximumNoActionsTime && clusters.length <= 0 && gamestate == gamestates.ready && !gameover) {
             var animationSpeed = 160;
             var relativeTimePeriod = (totalTimeWithoutActions - maximumNoActionsTime) * 100 % animationSpeed;
@@ -471,6 +470,7 @@ window.onload = function () {
 
         // Game Over overlay
         if (gameover && hardcoded) {
+            // Scale animation
             var scaleAnimationValue = 0;
             scaleAnimationValue = 1 - (( animationScaleEnd - totalTime ) / scaleAnimationTime);
             scaleAnimationValue = scaleAnimationValue > 1 ? 1 : scaleAnimationValue;
@@ -479,14 +479,12 @@ window.onload = function () {
             var levelheight = level.rows * level.tileheight;
 
             var verticalGap = -20 * heightRatio * scaleAnimationValue;
-            var imageTextGap = 10 * heightRatio * scaleAnimationValue;
+            var imageTextGap = 50 * heightRatio * scaleAnimationValue;
             // var gameOverimagesHeight = winImg.height + imageTextGap + winTxt.height;
             winImg.winImgCoordX = level.x + levelwidth / 2 - (winImg.width / 2 + winImg.horizontalShift)*scaleAnimationValue;
             winImg.winImgCoordY = level.y + verticalGap;
 
-            var maskImg = document.createElement('img');
-            maskImg.src = winImg.src;
-            context.drawImage(maskImg, winImg.winImgCoordX, winImg.winImgCoordY, winImg.width*scaleAnimationValue, winImg.height*scaleAnimationValue);
+
 
             var maskTxtImg = document.createElement('img');
             maskTxtImg.src = winTxt.src;
@@ -494,26 +492,53 @@ window.onload = function () {
             winTxt.winTxtCoordY = winImg.winImgCoordY - imageTextGap - winTxt.height*scaleAnimationValue
             context.drawImage(maskTxtImg,winTxt.winTxtCoordX , winTxt.winTxtCoordY, winTxt.width*scaleAnimationValue, winTxt.height*scaleAnimationValue);
 
-            // BOUNCING BUTTON
-            var bounceRatio = 1;
-            var bounceSpeed = 60;
-            var relativeBounceTimePeriod = 1;
-            var abs = totalTime*70/bounceSpeed;
-            var absMod3 = abs % 6;
-            var bounceHeightAdjustment = 0;
-            if(absMod3 > 4 && totalTime > animationOpacityEnd + 2){
-                relativeBounceTimePeriod = (totalTime) * 70 % bounceSpeed;
+            // BOUNCING "GET" BUTTON
+            var totalTimeInt = totalTime * 100;
+            var numberOfBounces = 1;
+            var bounceInterval = 2;
+            var bounceSpeed = 150;
+            var bouncePower = 1.2;
 
-                bounceRatio = relativeBounceTimePeriod < bounceSpeed / 2 ? relativeBounceTimePeriod /2 : bounceSpeed/2 - relativeBounceTimePeriod / 2;
-                bounceRatio = bounceRatio / 100 + 1;
-                bounceHeightAdjustment = winBtn.height/2 - winBtn.height/2 * bounceRatio;
+            var bounceRatio = 1; // by default if no bounce occuring;
+            var winImgbounceWidthtAdjustment = 0; // by default if no bounce occuring;
+            var winBtnbounceHeightAdjustment = 0; // by default if no bounce occuring;
+            var winImgbounceHeightAdjustment = 0; // by default if no bounce occuring;
+
+
+            var currentInterval = totalTimeInt/bounceSpeed % (bounceInterval + numberOfBounces);
+
+            if(currentInterval > bounceInterval && totalTime > animationOpacityEnd){
+                // from 0 to 1;
+                var bounceComplition = (totalTimeInt % bounceSpeed) / bounceSpeed;
+                if(bounceComplition < 0.5) {
+                    var relativeBounceTimePeriod = bounceComplition*2;
+                    bounceRatio = 1 + (bouncePower - 1) * easeOutElastic(relativeBounceTimePeriod);
+                } 
+                else {
+                    var relativeBounceTimePeriod = (1 - bounceComplition)*2;
+                    bounceRatio = 1 + (bouncePower - 1) * easeOutElastic(relativeBounceTimePeriod);
+
+                }
+
+                // var relativeBounceTimePeriod = bounceComplition < 0.5 ? bounceComplition*2 : (1 - bounceComplition)*2;
+                // bounceRatio = 1 + (bouncePower - 1) * easeOutCubic(relativeBounceTimePeriod);
+                // var bounceRatio_ = relativeBounceTimePeriod < bounceSpeed / 2 ? relativeBounceTimePeriod * 2 : bounceSpeed / 2 - relativeBounceTimePeriod / 2;
+                // bounceRatio = bounceRatio_ / 100 + 1;
+                
+                winImgbounceWidthtAdjustment = winImg.width/2 - winImg.width/2 * bounceRatio;
+                winImgbounceHeightAdjustment = winImg.height/2 - winImg.height/2 * bounceRatio;
+                winBtnbounceHeightAdjustment = winBtn.height/2 - winBtn.height/2 * bounceRatio;
             }
 
+
+            var maskImg = document.createElement('img');
+            maskImg.src = winImg.src;
+            context.drawImage(maskImg, winImg.winImgCoordX + winImgbounceWidthtAdjustment, winImg.winImgCoordY + winImgbounceHeightAdjustment, winImg.width*scaleAnimationValue* bounceRatio, winImg.height*scaleAnimationValue* bounceRatio);
 
             var winBtnImg = document.createElement('img');
             winBtnImg.src = winBtn.src;
             winBtn.winBtnCoordX = level.x + levelwidth / 2 - (winBtn.width*bounceRatio / 2)*scaleAnimationValue;
-            winBtn.winBtnCoordY = winImg.winImgCoordY + imageTextGap + (winImg.height/2)*scaleAnimationValue+winImg.height/2+bounceHeightAdjustment;
+            winBtn.winBtnCoordY = winImg.winImgCoordY + imageTextGap + (winImg.height/2)*scaleAnimationValue+winImg.height/2+winBtnbounceHeightAdjustment;
             context.drawImage(winBtnImg, winBtn.winBtnCoordX ,winBtn.winBtnCoordY, winBtn.width*scaleAnimationValue*bounceRatio, winBtn.height*bounceRatio*scaleAnimationValue);
 
         }
@@ -656,7 +681,7 @@ window.onload = function () {
         // continue only when gameover
         if(!gameover) return
 
-        opacity = ( animationOpacityEnd - totalTime ) / opacityAnimationTime;
+        var opacity = ( animationOpacityEnd - totalTime ) / opacityAnimationTime;
         context.globalAlpha = opacity > 0 ? opacity : 0;
     }
     
@@ -666,7 +691,7 @@ window.onload = function () {
 
         scaleAnimationTime = 0.25; //s
         opacityAnimationTime = 0.6; //s 
-        animationStart = totalTime;
+        var animationStart = totalTime;
         animationOpacityEnd = animationStart + opacityAnimationTime;
         animationScaleEnd = animationStart + scaleAnimationTime;
 
@@ -1126,6 +1151,15 @@ window.onload = function () {
                         [1, 2, 1, 3]]
                     )
                     break;
+                // it would be cool to have valid hardcoded move 3, because in other case we get error in console.
+                // case 2:
+                //     level.tiles = convertArrayToLevel(
+                //         [[0, 1, 2, 0],
+                //         [3, 2, 2, 0],
+                //         [3, 1, 0, 3],
+                //         [1, 2, 1, 3]]
+                //     )
+                //     break;
                 default:
                     level.tiles = convertArrayToLevel(
                         [[-1, -1, -1, -1],
@@ -1219,12 +1253,12 @@ window.onload = function () {
     // On mouse movement
     function onMouseMove(e) {
         // Get the mouse position
-        var pos = getMousePos(canvas, e, true);
+        var pos = getMousePos(canvas, e);
 
         // Check if we are dragging with a tile selected
         if (drag && level.selectedtile.selected) {
             // Get the tile under the mouse
-            mt = getMouseTile(pos);
+            var mt = getMouseTile(pos);
             if (mt.valid) {
                 // Valid tile
 
@@ -1239,7 +1273,7 @@ window.onload = function () {
 
     // On mouse button click
     function onMouseDown(e) {
-        if(e.type = 'touchend') e.preventDefault();
+        if(e.type == 'touchend') e.preventDefault();
 
         totalTimeWithoutActions = 0;
         // Get the mouse position
@@ -1247,15 +1281,15 @@ window.onload = function () {
 
         // HARDCODED VARIANT;
         if (gameover && hardcoded) {
-            checkBanubaLogoPressed(pos, e);
-            checkGetButtonPressed(pos);
+            checkBanubaLogoPressed(pos);
+            checkGameOverScreenButtonsPressed(pos);
             return false;
         }
 
         // Start dragging
         if (!drag) {
             // Get the tile under the mouse
-            mt = getMouseTile(pos);
+            var mt = getMouseTile(pos);
 
             if (mt.valid) {
                 // Valid tile
@@ -1293,15 +1327,14 @@ window.onload = function () {
         if (!hardcoded) checkButtonsPressed(pos);
     }
 
-    function checkBanubaLogoPressed(pos, e) {
-        console.log(e);
+    function checkBanubaLogoPressed(pos) {
         if (pos.x >= logo.logoCoordinateX && pos.x < logo.logoCoordinateX + logo.width &&
             pos.y >= logo.logoCoordinateY && pos.y < logo.logoCoordinateY + logo.height) {
                 callToAction();
         }
     }
 
-    function checkGetButtonPressed(pos) {
+    function checkGameOverScreenButtonsPressed(pos) {
 
         //text win a mask
         if (pos.x >= winTxt.winTxtCoordX && pos.x < winTxt.winTxtCoordX + winTxt.width &&
@@ -1362,9 +1395,8 @@ window.onload = function () {
     }
 
     // Get the mouse position
-    function getMousePos(canvas, e, log) {
+    function getMousePos(canvas, e) {
         if(e.touches) {
-            if(log) console.log(e)
             var rect = canvas.getBoundingClientRect();
             return {
                 x: Math.round((e.touches[0].clientX - rect.left) / (rect.right - rect.left) * canvas.width),
@@ -1396,11 +1428,8 @@ window.onload = function () {
 
         // relative playground sizes;
         setupObjectDimensionParams(playground);
-
         setupObjectDimensionParams(bgTxt);
-
         setupObjectDimensionParams(logo);
-
         setupObjectDimensionParams(cursorImg);
 
         //score container
@@ -1467,6 +1496,9 @@ window.onload = function () {
 
     function easingQuad (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
 
+    // elastic bounce effect at the end
+    function easeOutElastic(t) { return .04 * t / (--t) * Math.sin(25 * t) }
+
     function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
 
         if (arguments.length === 2) {
@@ -1518,6 +1550,7 @@ window.onload = function () {
     // Call init to start the game
     init();
 
+    // To activate game over for debug purposes;
     window.setTimeout(() => {
         // gameover = true;
         // startGameoverAnimation();
